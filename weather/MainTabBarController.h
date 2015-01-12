@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  MainTabBarController.h
 //  weather
 //
 //  Created by Andrei Vidrasco on 1/12/15.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface MainTabBarController : UITabBarController
 
 @end
-
