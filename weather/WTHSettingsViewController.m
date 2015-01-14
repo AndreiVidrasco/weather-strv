@@ -54,7 +54,7 @@ titleForHeaderInSection:(NSInteger)section {
     WTHSettingsCellModel *model = [self.datasource cellModelForRow:indexPath.row];
     cell.mainTitle.text = model.mainTitle;
     cell.detailTitle.text = model.detailTitle;
-
+    
     return cell;
 }
 
@@ -65,6 +65,5 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.datasource changeValueForRow:indexPath.row];
     [tableView reloadData];
 }
-
 
 @end

@@ -27,15 +27,7 @@
 
 @implementation WTHTodayViewController
 
-
-- (WTHTodayViewModel *)viewModel {
-    if (!_viewModel) {
-        _viewModel = [[WTHTodayViewModel alloc] initWithDelegate:self];
-    }
-    
-    return _viewModel;
-}
-
+#pragma mark - Life Cycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -50,7 +42,21 @@
 }
 
 
+#pragma mark - Getters
+
+- (WTHTodayViewModel *)viewModel {
+    if (!_viewModel) {
+        _viewModel = [[WTHTodayViewModel alloc] initWithDelegate:self];
+    }
+
+    return _viewModel;
+}
+
+
+#pragma mark - Private Methods
+
 - (void)updateInformation {
+#warning make loading indicator
     self.view.hidden = !self.viewModel.shouldShowInformation;
     self.weatherImage.image = [UIImage imageNamed:self.viewModel.weatherImageName];
     self.cityName.text = self.viewModel.cityName;
@@ -66,12 +72,20 @@
 - (void)adjustColorsAndFonts {
     self.cityName.font = [UIFont globalSemiboldFontOfSize:18.f];
     self.temperatureLabel.font = [UIFont globalRegularFontOfSize:25.f];
-    self.humidityLabel.font = self.precipitationLabel.font = self.pressureLabel.font = self.windLabel.font = self.directionLabel.font = [UIFont globalSemiboldFontOfSize:15.f];
+    self.humidityLabel.font =
+    self.precipitationLabel.font =
+    self.pressureLabel.font =
+    self.windLabel.font =
+    self.directionLabel.font = [UIFont globalSemiboldFontOfSize:15.f];
     self.shareButton.titleLabel.font = [UIFont globalSemiboldFontOfSize:18.f];
     
     self.cityName.textColor = [UIColor grayTextColor];
     self.temperatureLabel.textColor = [UIColor blueTextColor];
-    self.humidityLabel.textColor = self.precipitationLabel.textColor = self.pressureLabel.textColor = self.windLabel.textColor = self.directionLabel.textColor = [UIColor grayTextColor];
+    self.humidityLabel.textColor =
+    self.precipitationLabel.textColor =
+    self.pressureLabel.textColor =
+    self.windLabel.textColor =
+    self.directionLabel.textColor = [UIColor grayTextColor];
     self.shareButton.tintColor = [UIColor orangeButtonColor];
 }
 

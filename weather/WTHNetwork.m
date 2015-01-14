@@ -59,7 +59,11 @@
 - (void)GET:(NSString *)URLString parameters:(id)parameters success:(void (^)(NSURLSessionDataTask *, id))success {
     [self GET:URLString parameters:parameters success:success failure:^(NSURLSessionDataTask *task, NSError *error) {
          NSError *underlyingError = error.userInfo[NSUnderlyingErrorKey];
-         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:underlyingError.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                             message:underlyingError.localizedDescription
+                                                            delegate:nil
+                                                   cancelButtonTitle:@"OK"
+                                                   otherButtonTitles:nil];
          [alertView show];
      }];
 }

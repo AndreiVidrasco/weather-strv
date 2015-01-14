@@ -9,6 +9,7 @@
 #import "WTHMainTableViewCell.h"
 
 @interface WTHForecastDetailedCell : WTHMainTableViewCell
+
 @property (weak, nonatomic) IBOutlet UIImageView *forecastImage;
 @property (weak, nonatomic) IBOutlet UILabel *cityLabel;
 @property (weak, nonatomic) IBOutlet UILabel *weatherLabel;

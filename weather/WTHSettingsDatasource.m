@@ -9,7 +9,7 @@
 #import "WTHSettingsDatasource.h"
 #import "SettingsHandler.h"
 
-typedef NS_ENUM(NSInteger, RowIndexes) {
+typedef NS_ENUM (NSInteger, RowIndexes) {
     RowIndexesMetric,
     RowIndexesTemperature,
 };
@@ -22,7 +22,7 @@ typedef NS_ENUM(NSInteger, RowIndexes) {
 @end
 
 @implementation WTHSettingsDatasource
-
+#warning Refactor This SHIT!!!
 - (NSString *)titleForHeader {
     return NSLocalizedString(@"General", nil);
 }
@@ -40,13 +40,18 @@ typedef NS_ENUM(NSInteger, RowIndexes) {
 
 - (void)changeValueForRow:(NSInteger)row {
     switch (row) {
-        case RowIndexesMetric:
+        case RowIndexesMetric: {
             [self changeMetricToOposite];
             break;
-        case RowIndexesTemperature:
+        }
+
+        case RowIndexesTemperature: {
             [self changeTemperatureToOposite];
-        default:
+        }
+
+        default: {
             break;
+        }
     }
 }
 
@@ -58,16 +63,21 @@ typedef NS_ENUM(NSInteger, RowIndexes) {
     }
     MetricUnit unit = [[SettingsHandler sharedHandler] currentMetricUnit];
     switch (unit) {
-        case MetricUnitMiles:
+        case MetricUnitMiles: {
             _firstCellModel.detailTitle = NSLocalizedString(@"Miles", nil);
             break;
-        case MetricUnitMeters:
+        }
+
+        case MetricUnitMeters: {
             _firstCellModel.detailTitle = NSLocalizedString(@"Meters", nil);
             break;
-        default:
+        }
+
+        default: {
             break;
+        }
     }
-    
+
     return _firstCellModel;
 }
 
@@ -79,16 +89,21 @@ typedef NS_ENUM(NSInteger, RowIndexes) {
     }
     TemperatureUnit unit = [[SettingsHandler sharedHandler] currentTemperatureUnit];
     switch (unit) {
-        case TemperatureUnitFahrenheit:
+        case TemperatureUnitFahrenheit: {
             _secondeCellModel.detailTitle = NSLocalizedString(@"Fahrenheit", nil);
             break;
-        case TemperatureUnitCelsius:
+        }
+
+        case TemperatureUnitCelsius: {
             _secondeCellModel.detailTitle = NSLocalizedString(@"Celsius", nil);
             break;
-        default:
+        }
+
+        default: {
             break;
+        }
     }
-    
+
     return _secondeCellModel;
 }
 
@@ -96,14 +111,19 @@ typedef NS_ENUM(NSInteger, RowIndexes) {
 - (void)changeTemperatureToOposite {
     TemperatureUnit unit = [[SettingsHandler sharedHandler] currentTemperatureUnit];
     switch (unit) {
-        case TemperatureUnitCelsius:
+        case TemperatureUnitCelsius: {
             [[SettingsHandler sharedHandler] setTemperatureUnit:TemperatureUnitFahrenheit];
             break;
-        case TemperatureUnitFahrenheit:
+        }
+
+        case TemperatureUnitFahrenheit: {
             [[SettingsHandler sharedHandler] setTemperatureUnit:TemperatureUnitCelsius];
             break;
-        default:
+        }
+
+        default: {
             break;
+        }
     }
 }
 
@@ -111,16 +131,21 @@ typedef NS_ENUM(NSInteger, RowIndexes) {
 - (void)changeMetricToOposite {
     MetricUnit unit = [[SettingsHandler sharedHandler] currentMetricUnit];
     switch (unit) {
-        case MetricUnitMeters:
+        case MetricUnitMeters: {
             [[SettingsHandler sharedHandler] setMetricUnit:MetricUnitMiles];
             break;
-        case MetricUnitMiles:
+        }
+
+        case MetricUnitMiles: {
             [[SettingsHandler sharedHandler] setMetricUnit:MetricUnitMeters];
             break;
-            
-        default:
+        }
+
+        default: {
             break;
+        }
     }
 }
+
 
 @end

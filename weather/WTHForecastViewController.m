@@ -13,7 +13,6 @@
 
 @interface WTHForecastViewController () <UITableViewDataSource, UITableViewDelegate>
 
-
 @property (strong, nonatomic) WTHForecastDatasource *datasource;
 
 @end
@@ -32,7 +31,7 @@
     cell.temperatureLabel.text = cellModel.temperatureValue;
     cell.cityLabel.text = cellModel.mainTitle;
     cell.weatherLabel.text = cellModel.detailTitle;
-    
+
     return cell;
 }
 

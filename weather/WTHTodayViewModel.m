@@ -12,11 +12,11 @@
 #import "WTHTodayResponseModel.h"
 #import "SettingsHandler.h"
 
-#define MMToInch(x) x/25.5
+#define MMToInch(x) x / 25.5
 
 @interface WTHTodayViewModel () <WTHLocationTrackerDelegate>
 
-@property (weak, nonatomic) id<WTHTodayViewModelProtocol> delegate;
+@property (weak, nonatomic) id <WTHTodayViewModelProtocol> delegate;
 @property (strong, nonatomic) WTHTodayResponseModel *responseModel;
 
 @end
@@ -32,7 +32,10 @@
 @synthesize windSpeed = _windSpeed;
 @synthesize shouldShowInformation = _shouldShowInformation;
 
-- (instancetype)initWithDelegate:(id<WTHTodayViewModelProtocol>)delegate {
+#pragma mark - Life Cycle
+#warning Refactor This SHIT!!!
+
+- (instancetype)initWithDelegate:(id <WTHTodayViewModelProtocol> )delegate {
     self = [super init];
     if (self) {
         _delegate = delegate;
@@ -42,6 +45,8 @@
 }
 
 
+#pragma mark - Public Methods
+
 - (void)updateValue {
     self.responseModel = nil;
     [self.delegate updateInformation];
@@ -49,29 +54,18 @@
 }
 
 
+#pragma mark - Location Tracker Delegate
+
 - (void)locationManagerDidUpdateLocations:(NSArray *)locations {
     [self makeRequestWithLocation:[locations lastObject]];
 }
 
+
 - (void)locationManagerDidFailWithError:(NSError *)error {
-    
 }
 
 
-- (void)makeRequestWithLocation:(CLLocation *)location {
-    NSString *querry = [NSString stringWithFormat:@"%.3f,%.3f", location.coordinate.latitude, location.coordinate.longitude];
-    NSDictionary *parameters = @{@"q" : querry,
-                                 @"num_of_days" : @"1",
-                                 @"includeLocation" : @"yes",
-                                 @"fx" : @"no",
-                                 @"date" : @"today"};
-    __weak WTHTodayViewModel *weakSelf = self;
-    [[WTHNetwork sharedManager] GET:@"weather.ashx" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
-        weakSelf.responseModel = [[WTHTodayResponseModel alloc] initWithDictionary:responseObject];
-        [weakSelf.delegate updateInformation];
-    }];
-}
-
+#pragma mark - Geters
 
 - (NSString *)cityName {
     NSString *string = @"";
@@ -84,6 +78,7 @@
     if (self.responseModel.country) {
         string = [string stringByAppendingFormat:@"%@, ", self.responseModel.country];
     }
+    
     return string;
 }
 
@@ -102,17 +97,20 @@
     MetricUnit unit = [[SettingsHandler sharedHandler] currentMetricUnit];
     NSString *value;
     switch (unit) {
-        case MetricUnitMeters:
+        case MetricUnitMeters: {
             value = [self.responseModel.precipMM stringByAppendingString:@" mm"];
             break;
+        }
+            
         case MetricUnitMiles: {
             CGFloat prep = [self.responseModel.precipMM floatValue];
             value = [NSString stringWithFormat:@"%.2f inch", MMToInch(prep)];
+            break;
         }
-            break;
             
-        default:
+        default: {
             break;
+        }
     }
     
     return value;
@@ -128,15 +126,21 @@
     TemperatureUnit unit = [[SettingsHandler sharedHandler] currentTemperatureUnit];
     NSString *value;
     switch (unit) {
-        case TemperatureUnitCelsius:
+        case TemperatureUnitCelsius: {
             value = self.responseModel.temp_C;
             break;
-        case TemperatureUnitFahrenheit:
+        }
+            
+        case TemperatureUnitFahrenheit: {
             value = self.responseModel.temp_F;
             break;
-        default:
+        }
+            
+        default: {
             break;
+        }
     }
+    
     return [value stringByAppendingFormat:@"° | %@", self.responseModel.weatherDesc];
 }
 
@@ -150,15 +154,19 @@
     MetricUnit unit = [[SettingsHandler sharedHandler] currentMetricUnit];
     NSString *value;
     switch (unit) {
-        case MetricUnitMeters:
+        case MetricUnitMeters: {
             value = [self.responseModel.windspeedKmph stringByAppendingString:@" km/h"];
             break;
-        case MetricUnitMiles:
+        }
+            
+        case MetricUnitMiles: {
             value = [self.responseModel.windspeedMiles stringByAppendingString:@" mph"];
             break;
+        }
             
-        default:
+        default: {
             break;
+        }
     }
     
     return value;
@@ -167,6 +175,23 @@
 
 - (BOOL)shouldShowInformation {
     return self.responseModel;
+}
+
+
+#pragma mark - Private Methods
+
+- (void)makeRequestWithLocation:(CLLocation *)location {
+    NSString *querry = [NSString stringWithFormat:@"%.3f,%.3f", location.coordinate.latitude, location.coordinate.longitude];
+    NSDictionary *parameters = @{@"q" : querry,
+                                 @"num_of_days" : @"1",
+                                 @"includeLocation" : @"yes",
+                                 @"fx" : @"no",
+                                 @"date" : @"today"};
+    __weak WTHTodayViewModel *weakSelf = self;
+    [[WTHNetwork sharedManager] GET:@"weather.ashx" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+        weakSelf.responseModel = [[WTHTodayResponseModel alloc] initWithDictionary:responseObject];
+        [weakSelf.delegate updateInformation];
+    }];
 }
 
 @end

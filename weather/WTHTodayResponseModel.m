@@ -36,7 +36,7 @@
         NSDictionary *nearestArea = [[data safeObjectForKey:@"nearest_area"] firstObject];
         [self extractDataFromNearestArea:nearestArea];
     }
-    
+
     return self;
 }
 
@@ -47,11 +47,10 @@
     self.pressure = [currentCondition safeObjectForKey:@"pressure"];
     self.temp_C = [currentCondition safeObjectForKey:@"temp_C"];
     self.temp_F = [currentCondition safeObjectForKey:@"temp_F"];
-    self.weatherDesc = [self firstValueInArrayFromDictionary:currentCondition forKey:@"weatherDesc"];
     self.winddir16Point = [currentCondition safeObjectForKey:@"winddir16Point"];
     self.windspeedKmph = [currentCondition safeObjectForKey:@"windspeedKmph"];
     self.windspeedMiles = [currentCondition safeObjectForKey:@"windspeedMiles"];
-
+    self.weatherDesc = [self firstValueInArrayFromDictionary:currentCondition forKey:@"weatherDesc"];
 }
 
 
@@ -64,8 +63,8 @@
 
 - (NSString *)firstValueInArrayFromDictionary:(NSDictionary *)dict forKey:(NSString *)key {
     NSArray *array = [dict safeObjectForKey:key];
+
     return [[array firstObject] safeObjectForKey:@"value"];
 }
-
 
 @end

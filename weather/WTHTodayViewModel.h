@@ -20,7 +20,6 @@
 - (instancetype)initWithDelegate:(id<WTHTodayViewModelProtocol>)delegate;
 - (void)updateValue;
 
-@property (assign, nonatomic, readonly) BOOL shouldShowInformation;
 @property (strong, nonatomic, readonly) NSString *weatherImageName;
 @property (strong, nonatomic, readonly) NSString *cityName;
 @property (strong, nonatomic, readonly) NSString *temperature;
@@ -29,5 +28,6 @@
 @property (strong, nonatomic, readonly) NSString *pressure;
 @property (strong, nonatomic, readonly) NSString *windSpeed;
 @property (strong, nonatomic, readonly) NSString *direction;
+@property (assign, nonatomic, readonly) BOOL shouldShowInformation;
 
 @end
