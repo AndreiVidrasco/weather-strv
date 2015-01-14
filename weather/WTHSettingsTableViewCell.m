@@ -11,6 +11,7 @@
 @implementation WTHSettingsTableViewCell
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
     self.mainTitle.font = [UIFont globalRegularFontOfSize:17];
     self.detailTitle.font = [UIFont globalRegularFontOfSize:17];
     self.mainTitle.textColor = [UIColor grayTextColor];

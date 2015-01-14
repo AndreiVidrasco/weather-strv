@@ -19,7 +19,6 @@
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSFontAttributeName: [UIFont globalSemiboldFontOfSize:18]}];
     [[UINavigationBar appearance] setBarTintColor:[UIColor whiteColor]];
     [[UITableView appearance] setBackgroundColor:[UIColor whiteColor]];
-    // Do any additional setup after loading the view.
 }
 
 @end

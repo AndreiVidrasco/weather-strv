@@ -18,13 +18,6 @@
 
 @implementation WTHSettingsViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    self.title = NSLocalizedString(@"Settings", nil);
-    // Do any additional setup after loading the view.
-}
-
-
 - (WTHSettingsDatasource *)datasource {
     if (!_datasource) {
         _datasource = [[WTHSettingsDatasource alloc] init];

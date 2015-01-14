@@ -29,6 +29,16 @@
 		75ADD3D21A6435D8002F1879 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75ADD3D11A6435D8002F1879 /* Images.xcassets */; };
 		75ADD3D51A6435D8002F1879 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75ADD3D31A6435D8002F1879 /* LaunchScreen.xib */; };
 		75ADD3E11A6435D8002F1879 /* weatherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 75ADD3E01A6435D8002F1879 /* weatherTests.m */; };
+		75E01D631A66E43F006DD69F /* WTHNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E01D601A66E43F006DD69F /* WTHNetwork.m */; };
+		75E01D641A66E43F006DD69F /* WTHLocationTrackingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E01D621A66E43F006DD69F /* WTHLocationTrackingManager.m */; };
+		75E01D671A66E5EE006DD69F /* WTHForecastDetailedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E01D661A66E5EE006DD69F /* WTHForecastDetailedCell.m */; };
+		75E01D6A1A66EA0B006DD69F /* WTHForecastDatasource.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E01D691A66EA0B006DD69F /* WTHForecastDatasource.m */; };
+		75E01D6D1A66EA36006DD69F /* WTHForecastLocationsDatasource.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E01D6C1A66EA36006DD69F /* WTHForecastLocationsDatasource.m */; };
+		75E01D701A66EA43006DD69F /* WTHForecastCitiesDatasource.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E01D6F1A66EA43006DD69F /* WTHForecastCitiesDatasource.m */; };
+		75E01D731A66EAD1006DD69F /* WTHForecastCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E01D721A66EAD1006DD69F /* WTHForecastCellModel.m */; };
+		75E01D761A66F1AA006DD69F /* WTHTodayViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E01D751A66F1AA006DD69F /* WTHTodayViewModel.m */; };
+		75E01D791A66F99E006DD69F /* WTHTodayResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E01D781A66F99E006DD69F /* WTHTodayResponseModel.m */; };
+		75E01D7C1A670328006DD69F /* NSDictionary+SafeObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E01D7B1A670328006DD69F /* NSDictionary+SafeObjects.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +91,26 @@
 		75ADD3DA1A6435D8002F1879 /* weatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = weatherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		75ADD3DF1A6435D8002F1879 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		75ADD3E01A6435D8002F1879 /* weatherTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = weatherTests.m; sourceTree = "<group>"; };
+		75E01D5F1A66E43F006DD69F /* WTHNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHNetwork.h; sourceTree = "<group>"; };
+		75E01D601A66E43F006DD69F /* WTHNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHNetwork.m; sourceTree = "<group>"; };
+		75E01D611A66E43F006DD69F /* WTHLocationTrackingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHLocationTrackingManager.h; sourceTree = "<group>"; };
+		75E01D621A66E43F006DD69F /* WTHLocationTrackingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHLocationTrackingManager.m; sourceTree = "<group>"; };
+		75E01D651A66E5EE006DD69F /* WTHForecastDetailedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHForecastDetailedCell.h; sourceTree = "<group>"; };
+		75E01D661A66E5EE006DD69F /* WTHForecastDetailedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHForecastDetailedCell.m; sourceTree = "<group>"; };
+		75E01D681A66EA0B006DD69F /* WTHForecastDatasource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHForecastDatasource.h; sourceTree = "<group>"; };
+		75E01D691A66EA0B006DD69F /* WTHForecastDatasource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHForecastDatasource.m; sourceTree = "<group>"; };
+		75E01D6B1A66EA36006DD69F /* WTHForecastLocationsDatasource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHForecastLocationsDatasource.h; sourceTree = "<group>"; };
+		75E01D6C1A66EA36006DD69F /* WTHForecastLocationsDatasource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHForecastLocationsDatasource.m; sourceTree = "<group>"; };
+		75E01D6E1A66EA43006DD69F /* WTHForecastCitiesDatasource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHForecastCitiesDatasource.h; sourceTree = "<group>"; };
+		75E01D6F1A66EA43006DD69F /* WTHForecastCitiesDatasource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHForecastCitiesDatasource.m; sourceTree = "<group>"; };
+		75E01D711A66EAD1006DD69F /* WTHForecastCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHForecastCellModel.h; sourceTree = "<group>"; };
+		75E01D721A66EAD1006DD69F /* WTHForecastCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHForecastCellModel.m; sourceTree = "<group>"; };
+		75E01D741A66F1AA006DD69F /* WTHTodayViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHTodayViewModel.h; sourceTree = "<group>"; };
+		75E01D751A66F1AA006DD69F /* WTHTodayViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHTodayViewModel.m; sourceTree = "<group>"; };
+		75E01D771A66F99E006DD69F /* WTHTodayResponseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHTodayResponseModel.h; sourceTree = "<group>"; };
+		75E01D781A66F99E006DD69F /* WTHTodayResponseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHTodayResponseModel.m; sourceTree = "<group>"; };
+		75E01D7A1A670328006DD69F /* NSDictionary+SafeObjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+SafeObjects.h"; sourceTree = "<group>"; };
+		75E01D7B1A670328006DD69F /* NSDictionary+SafeObjects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+SafeObjects.m"; sourceTree = "<group>"; };
 		85C7E0D27C8BB08D12C93E8E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		8B68116AC9882A1A13741F31 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -163,8 +193,22 @@
 				75919C8E1A64588900F8B47E /* WTHMainTableViewCell.m */,
 				75919C7A1A644D8E00F8B47E /* WTHTodayViewController.h */,
 				75919C7B1A644D8E00F8B47E /* WTHTodayViewController.m */,
+				75E01D741A66F1AA006DD69F /* WTHTodayViewModel.h */,
+				75E01D751A66F1AA006DD69F /* WTHTodayViewModel.m */,
+				75E01D771A66F99E006DD69F /* WTHTodayResponseModel.h */,
+				75E01D781A66F99E006DD69F /* WTHTodayResponseModel.m */,
 				75919C7D1A644D9B00F8B47E /* WTHForecastViewController.h */,
 				75919C7E1A644D9B00F8B47E /* WTHForecastViewController.m */,
+				75E01D681A66EA0B006DD69F /* WTHForecastDatasource.h */,
+				75E01D691A66EA0B006DD69F /* WTHForecastDatasource.m */,
+				75E01D6B1A66EA36006DD69F /* WTHForecastLocationsDatasource.h */,
+				75E01D6C1A66EA36006DD69F /* WTHForecastLocationsDatasource.m */,
+				75E01D6E1A66EA43006DD69F /* WTHForecastCitiesDatasource.h */,
+				75E01D6F1A66EA43006DD69F /* WTHForecastCitiesDatasource.m */,
+				75E01D711A66EAD1006DD69F /* WTHForecastCellModel.h */,
+				75E01D721A66EAD1006DD69F /* WTHForecastCellModel.m */,
+				75E01D651A66E5EE006DD69F /* WTHForecastDetailedCell.h */,
+				75E01D661A66E5EE006DD69F /* WTHForecastDetailedCell.m */,
 				75919C801A644DA600F8B47E /* WTHSettingsViewController.h */,
 				75919C811A644DA600F8B47E /* WTHSettingsViewController.m */,
 				75919C961A64663200F8B47E /* WTHSettingsDatasource.h */,
@@ -173,8 +217,14 @@
 				75919C9A1A64667000F8B47E /* WTHSettingsCellModel.m */,
 				75919C8A1A6457D000F8B47E /* WTHSettingsTableViewCell.h */,
 				75919C8B1A6457D000F8B47E /* WTHSettingsTableViewCell.m */,
+				75E01D5F1A66E43F006DD69F /* WTHNetwork.h */,
+				75E01D601A66E43F006DD69F /* WTHNetwork.m */,
+				75E01D611A66E43F006DD69F /* WTHLocationTrackingManager.h */,
+				75E01D621A66E43F006DD69F /* WTHLocationTrackingManager.m */,
 				75919C931A64612600F8B47E /* SettingsHandler.h */,
 				75919C941A64612600F8B47E /* SettingsHandler.m */,
+				75E01D7A1A670328006DD69F /* NSDictionary+SafeObjects.h */,
+				75E01D7B1A670328006DD69F /* NSDictionary+SafeObjects.m */,
 				75919C831A64525C00F8B47E /* UIFont+GlobalFont.h */,
 				75919C841A64525C00F8B47E /* UIFont+GlobalFont.m */,
 				75919C901A645DDD00F8B47E /* UIColor+GlobalColors.h */,
@@ -354,17 +404,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75E01D7C1A670328006DD69F /* NSDictionary+SafeObjects.m in Sources */,
 				75919C7C1A644D8E00F8B47E /* WTHTodayViewController.m in Sources */,
 				75919C891A6453A800F8B47E /* MainTabBarController.m in Sources */,
 				75ADD3CA1A6435D8002F1879 /* AppDelegate.m in Sources */,
 				75919C851A64525C00F8B47E /* UIFont+GlobalFont.m in Sources */,
 				75919C8F1A64588900F8B47E /* WTHMainTableViewCell.m in Sources */,
+				75E01D761A66F1AA006DD69F /* WTHTodayViewModel.m in Sources */,
+				75E01D701A66EA43006DD69F /* WTHForecastCitiesDatasource.m in Sources */,
 				75919C8C1A6457D000F8B47E /* WTHSettingsTableViewCell.m in Sources */,
+				75E01D6D1A66EA36006DD69F /* WTHForecastLocationsDatasource.m in Sources */,
 				75919C9B1A64667000F8B47E /* WTHSettingsCellModel.m in Sources */,
 				75ADD3C71A6435D8002F1879 /* main.m in Sources */,
+				75E01D6A1A66EA0B006DD69F /* WTHForecastDatasource.m in Sources */,
+				75E01D641A66E43F006DD69F /* WTHLocationTrackingManager.m in Sources */,
 				75919C951A64612600F8B47E /* SettingsHandler.m in Sources */,
+				75E01D671A66E5EE006DD69F /* WTHForecastDetailedCell.m in Sources */,
 				75919C7F1A644D9B00F8B47E /* WTHForecastViewController.m in Sources */,
+				75E01D791A66F99E006DD69F /* WTHTodayResponseModel.m in Sources */,
+				75E01D631A66E43F006DD69F /* WTHNetwork.m in Sources */,
 				75919C981A64663200F8B47E /* WTHSettingsDatasource.m in Sources */,
+				75E01D731A66EAD1006DD69F /* WTHForecastCellModel.m in Sources */,
 				75919C921A645DDD00F8B47E /* UIColor+GlobalColors.m in Sources */,
 				75919C821A644DA600F8B47E /* WTHSettingsViewController.m in Sources */,
 			);
