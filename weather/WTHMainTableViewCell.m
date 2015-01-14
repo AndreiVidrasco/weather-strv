@@ -14,4 +14,9 @@
     return NSStringFromClass([self class]);
 }
 
+
++ (CGFloat)prefferedHeight {
+    return 44.f;
+}
+
 @end

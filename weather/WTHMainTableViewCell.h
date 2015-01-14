@@ -11,5 +11,6 @@
 @interface WTHMainTableViewCell : UITableViewCell
 
 + (NSString *)cellIdentifier;
++ (CGFloat)prefferedHeight;
 
 @end

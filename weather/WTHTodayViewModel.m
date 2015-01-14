@@ -62,6 +62,8 @@
 
 
 - (void)locationManagerDidFailWithError:(NSError *)error {
+    [[WTHLocationTrackingManager sharedInstance] startTrackingUserWithDelegate:self];
+
 }
 
 
@@ -125,14 +127,17 @@
 - (NSString *)temperature {
     TemperatureUnit unit = [[SettingsHandler sharedHandler] currentTemperatureUnit];
     NSString *value;
+    NSString *sign;
     switch (unit) {
         case TemperatureUnitCelsius: {
             value = self.responseModel.temp_C;
+            sign = @"C";
             break;
         }
             
         case TemperatureUnitFahrenheit: {
             value = self.responseModel.temp_F;
+            sign = @"F";
             break;
         }
             
@@ -141,12 +146,13 @@
         }
     }
     
-    return [value stringByAppendingFormat:@"° | %@", self.responseModel.weatherDesc];
+    return [value stringByAppendingFormat:@"°%@ | %@", sign, self.responseModel.weatherDesc];
 }
 
 
 - (NSString *)weatherImageName {
-    return self.responseModel.weatherDesc;
+#warning fix this
+    return @"today_sun_big";//self.responseModel.weatherDesc;
 }
 
 

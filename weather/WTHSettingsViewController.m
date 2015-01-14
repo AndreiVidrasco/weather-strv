@@ -35,6 +35,11 @@ willDisplayHeaderView:(UITableViewHeaderFooterView *)view
 }
 
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [WTHMainTableViewCell prefferedHeight];
+}
+
+
 - (NSString *)tableView:(UITableView *)tableView
 titleForHeaderInSection:(NSInteger)section {
     return [self.datasource titleForHeader];
