@@ -8,8 +8,10 @@
 
 #import "WTHTodayViewController.h"
 #import "WTHTodayViewModel.h"
+#import "SRCSearchInputViewController.h"
+#import "GeoLocation.h"
 
-@interface WTHTodayViewController () <WTHTodayViewModelProtocol>
+@interface WTHTodayViewController () <WTHTodayViewModelProtocol, SearchInputViewControllerDelegate>
 
 @property (strong, nonatomic) WTHTodayViewModel *viewModel;
 
@@ -50,6 +52,19 @@
     }
 
     return _viewModel;
+}
+
+
+- (IBAction)share:(id)sender {
+    SRCSearchInputViewController *inputVCtrl = [SRCSearchInputViewController instantiateWithDelegate:self];
+    UINavigationController *modalNav = [[UINavigationController alloc] initWithRootViewController:inputVCtrl];
+    
+    [self.parentViewController presentViewController:modalNav animated:YES completion:nil];
+}
+
+
+- (void)searchInputVC:(SRCSearchInputViewController *)viewController didFinishPickingLocation:(GeoLocation *)location {
+    NSLog(@"%@", location.address);
 }
 
 
