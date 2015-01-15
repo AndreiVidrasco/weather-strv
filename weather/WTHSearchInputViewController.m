@@ -12,12 +12,12 @@
 #import "WTHAutocompleteCell.h"
 #import "SRCFrequentSuggestionsManager.h"
 #import "WTHGMapsRequester.h"
+#import "WTHNetwork.h"
 
 @interface WTHSearchInputViewController () <UISearchBarDelegate, UITextFieldDelegate, UITableViewDelegate>
 
 @property (readwrite) NSArray *suggestionsList;
 
-@property (weak, nonatomic) id<SearchInputViewControllerDelegate> delegate;
 @property (assign, nonatomic) BOOL shouldDisplayLoadingIndicator;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
@@ -28,10 +28,9 @@
 
 @implementation WTHSearchInputViewController
 
-+ (instancetype)instantiateWithDelegate:(id<SearchInputViewControllerDelegate>)delegate {
++ (instancetype)instantiate {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     WTHSearchInputViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([WTHSearchInputViewController class])];
-    viewController.delegate = delegate;
     
     return viewController;
 }
@@ -155,10 +154,8 @@
 
 - (void)geocodePoint:(NSString *)locationPointName {
     __weak WTHSearchInputViewController *weakSelf = self;
-    [[WTHGMapsRequester sharedManager] geocodeString:locationPointName completionBlock:^(WTHGeoLocation *geoLocation) {
-        if ([weakSelf.delegate respondsToSelector:@selector(searchInputVC:didFinishPickingLocation:)]) {
-            [weakSelf.delegate searchInputVC:self didFinishPickingLocation:geoLocation];
-        }
+    [[WTHNetwork sharedManager] makeRequestWithQuerry:locationPointName success:^(id responseObject) {
+        
         [[SRCFrequentSuggestionsManager sharedManager] insertQuerryIntoDatabaseIfNew:geoLocation.address];
         [weakSelf.autocompleteSearchBar resignFirstResponder];
         [weakSelf dismissViewControllerAnimated:YES completion:nil];

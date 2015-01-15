@@ -8,6 +8,11 @@
 
 #import "WTHCurrentLocationInformation.h"
 #import "WTHForecastCellModel.h"
+#import "WTHNetwork.h"
+#import "WTHGeoLocation.h"
+#import "WTHLocationsStorageManager.h"
+
+NSString *const WTHNetworkDidReceiveNewCurrentLocationInformation = @"WTHNetworkDidReceiveNewCurrentLocationInformation";
 
 @interface WTHCurrentLocationInformation ()
 
@@ -29,6 +34,8 @@
 
 @implementation WTHCurrentLocationInformation
 
+#pragma mark - Life Cycle
+
 + (instancetype)sharedInformation {
     static dispatch_once_t pred;
     static id sharedManager = nil;
@@ -40,6 +47,8 @@
 }
 
 
+#pragma mark - Public Methods
+
 - (void)updateInformationWithDict:(NSDictionary *)dictionary {
     NSDictionary *data = [dictionary safeObjectForKey:@"data"];
     NSDictionary *currentCondition = [[data safeObjectForKey:@"current_condition"] firstObject];
@@ -50,6 +59,21 @@
     [self extractDataFromForecast:forecast];
 }
 
+
+- (void)updateCurrentLocation:(CLLocation *)location {
+    [[WTHNetwork sharedManager] makeRequestWithLocation:location success:^(id responseObject) {
+        [self updateInformationWithDict:responseObject];
+        WTHGeoLocation *geoLocation = [[WTHGeoLocation alloc] init];
+        geoLocation.address = [WTHCurrentLocationInformation sharedInformation].region;
+        geoLocation.latitude = location.coordinate.latitude;
+        geoLocation.longitude = location.coordinate.longitude;
+        [[WTHLocationsStorageManager sharedManager] insertLocationIntoDatabaseIfNew:geoLocation];
+        [[NSNotificationCenter defaultCenter] postNotificationName:WTHNetworkDidReceiveNewCurrentLocationInformation object:responseObject];
+    }];
+    
+}
+
+#pragma mark - Private Methods
 
 - (void)extractDataFromCurrentCondition:(NSDictionary *)currentCondition {
     self.humidity = [currentCondition safeObjectForKey:@"humidity"];
@@ -79,6 +103,7 @@
         NSDictionary *hourly = [[dict safeObjectForKey:@"hourly"] firstObject];
         cellModel.temperatureValueC = [[hourly safeObjectForKey:@"tempC"] stringByAppendingString:@"°"];
         cellModel.temperatureValueF = [[hourly safeObjectForKey:@"tempF"] stringByAppendingString:@"°"];
+        cellModel.weatherDescription = [self firstValueInArrayFromDictionary:hourly forKey:@"weatherDesc"];
         cellModel.detailTitle = [self firstValueInArrayFromDictionary:hourly forKey:@"weatherDesc"];
         [nextDays addObject:cellModel];
     }

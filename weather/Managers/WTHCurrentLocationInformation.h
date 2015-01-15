@@ -7,11 +7,22 @@
 //
 
 #import <Foundation/Foundation.h>
+@import CoreLocation;
+NSString *const WTHNetworkDidReceiveNewCurrentLocationInformation;
 
 @interface WTHCurrentLocationInformation : NSObject
-
+/**
+ Shared instance of this class
+ */
 + (instancetype)sharedInformation;
+/**
+ Update Values from dict
+ */
 - (void)updateInformationWithDict:(NSDictionary *)dictionary;
+/**
+ Make Request to Server with location and Update Location info
+ */
+- (void)updateCurrentLocation:(CLLocation *)location;
 
 @property (strong, nonatomic, readonly) NSString *humidity;
 @property (strong, nonatomic, readonly) NSString *precipMM;
@@ -27,5 +38,6 @@
 @property (strong, nonatomic, readonly) NSString *region;
 @property (strong, nonatomic, readonly) NSArray *nextDaysInformation;
 @property (assign, nonatomic, readonly) BOOL shouldShowInformation;
+
 
 @end

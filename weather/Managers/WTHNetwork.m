@@ -13,7 +13,6 @@
 #import "WTHLocationsStorageManager.h"
 
 #define BaseURL @"http://api.worldweatheronline.com/free/v2/"
-NSString *const WTHNetworkDidReceiveNewCurrentLocationInformation = @"WTHNetworkDidReceiveNewCurrentLocationInformation";
 
 @interface WTHNetwork ()
 
@@ -74,25 +73,23 @@ NSString *const WTHNetworkDidReceiveNewCurrentLocationInformation = @"WTHNetwork
 
 
 - (void)makeRequestWithLocation:(CLLocation *)location
-andAddToDatabaseAfterReceivingInformation:(BOOL)adding{
+                        success:(void (^)(id responseObject))success {
     NSString *querry = [NSString stringWithFormat:@"%.3f,%.3f", location.coordinate.latitude, location.coordinate.longitude];
+    [self makeRequestWithQuerry:querry success:success];
+}
+
+
+- (void)makeRequestWithQuerry:(NSString *)querry
+                        success:(void (^)(id responseObject))success {
     NSDictionary *parameters = @{@"q" : querry,
                                  @"num_of_days" : @"10",
                                  @"includeLocation" : @"yes",
                                  @"tp" : @"24",
                                  @"date" : @"today"};
     [[WTHNetwork sharedManager] GET:@"weather.ashx" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
-        [[WTHCurrentLocationInformation sharedInformation] updateInformationWithDict:responseObject];
-        WTHGeoLocation *geoLocation = [[WTHGeoLocation alloc] init];
-        geoLocation.address = [WTHCurrentLocationInformation sharedInformation].region;
-        geoLocation.latitude = location.coordinate.latitude;
-        geoLocation.longitude = location.coordinate.longitude;
-        [[WTHLocationsStorageManager sharedManager] insertLocationIntoDatabaseIfNew:geoLocation];
-#warning Code to add to database
-        [[NSNotificationCenter defaultCenter] postNotificationName:WTHNetworkDidReceiveNewCurrentLocationInformation object:responseObject];
+        success(responseObject);
     }];
 }
-
 
 - (NSDictionary *)addDefaultParametersToDictionary:(NSDictionary *)dictionary {
     NSMutableDictionary *mutableDictionary = [NSMutableDictionary dictionaryWithDictionary:dictionary];

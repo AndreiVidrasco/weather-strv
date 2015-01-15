@@ -13,6 +13,9 @@
 @property (retain, nonatomic) NSString *address;
 @property (assign, nonatomic) double latitude;
 @property (assign, nonatomic) double longitude;
+@property (retain, nonatomic) NSString *weatherDescription;
+@property (retain, nonatomic) NSString *temperatureValueF;
+@property (retain, nonatomic) NSString *temperatureValueC;
 
 + (NSString *)entityName;
 

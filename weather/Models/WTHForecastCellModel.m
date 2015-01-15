@@ -8,6 +8,8 @@
 
 #import "WTHForecastCellModel.h"
 #import "WTHSettingsHandler.h"
+#import "WTHImageNameFromWeatherDescription.h"
+
 @implementation WTHForecastCellModel
 
 - (NSString *)temperatureValue {
@@ -47,5 +49,8 @@
 }
 
 
+- (NSString *)imageName {
+    return [WTHImageNameFromWeatherDescription imageNameFromWeather:self.weatherDescription];
+}
 
 @end

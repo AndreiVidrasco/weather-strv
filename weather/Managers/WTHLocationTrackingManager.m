@@ -7,7 +7,7 @@
 //
 
 #import "WTHLocationTrackingManager.h"
-#import "WTHNetwork.h"
+#import "WTHCurrentLocationInformation.h"
 
 @interface WTHLocationTrackingManager () <CLLocationManagerDelegate>
 
@@ -83,7 +83,7 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     [self stopTrackingUser];
-    [[WTHNetwork sharedManager] makeRequestWithLocation:[locations firstObject] andAddToDatabaseAfterReceivingInformation:YES];
+    [[WTHCurrentLocationInformation sharedInformation] updateCurrentLocation:[locations firstObject]];
 }
 
 

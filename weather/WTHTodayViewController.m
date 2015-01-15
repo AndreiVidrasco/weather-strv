@@ -12,6 +12,7 @@
 #import "WTHGeoLocation.h"
 #import "WTHLocationsViewController.h"
 #import "WTHLocationTrackingManager.h"
+#import "WTHCurrentLocationInformation.h"
 
 @interface WTHTodayViewController ()
 

@@ -13,6 +13,9 @@
 @dynamic address;
 @dynamic latitude;
 @dynamic longitude;
+@dynamic temperatureValueC;
+@dynamic temperatureValueF;
+@dynamic weatherDescription;
 
 + (NSString *)entityName {
     return NSStringFromClass([LocationEntity class]);

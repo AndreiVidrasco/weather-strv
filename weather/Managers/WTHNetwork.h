@@ -9,13 +9,14 @@
 #import <Foundation/Foundation.h>
 @import CoreLocation;
 
-NSString *const WTHNetworkDidReceiveNewCurrentLocationInformation;
 
 @interface WTHNetwork : NSObject
 
 + (instancetype)sharedManager;
 
 - (void)makeRequestWithLocation:(CLLocation *)location
-andAddToDatabaseAfterReceivingInformation:(BOOL)adding;
+                        success:(void (^)(id responseObject))success;
+- (void)makeRequestWithQuerry:(NSString *)querry
+                      success:(void (^)(id responseObject))success;
 
 @end

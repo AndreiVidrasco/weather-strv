@@ -39,6 +39,10 @@
     for (LocationEntity *entity in recentSearches) {
         WTHForecastCellModel *cellModel = [[WTHForecastCellModel alloc] init];
         cellModel.mainTitle = entity.address;
+        cellModel.weatherDescription = entity.weatherDescription;
+        cellModel.temperatureValueF = entity.temperatureValueF;
+        cellModel.temperatureValueC = entity.temperatureValueC;
+        
         [array addObject:cellModel];
     }
     

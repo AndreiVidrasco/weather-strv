@@ -15,6 +15,7 @@
 @property (strong, nonatomic) NSString *temperatureValue;
 @property (strong, nonatomic) NSString *imageName;
 
+@property (strong, nonatomic) NSString *weatherDescription;
 @property (strong, nonatomic) NSString *date;
 @property (strong, nonatomic) NSString *temperatureValueF;
 @property (strong, nonatomic) NSString *temperatureValueC;

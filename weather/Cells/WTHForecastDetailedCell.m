@@ -7,7 +7,6 @@
 //
 
 #import "WTHForecastDetailedCell.h"
-#import "WTHImageNameFromWeatherDescription.h"
 
 @interface WTHForecastDetailedCell ()
 
@@ -21,8 +20,7 @@
 @implementation WTHForecastDetailedCell
 
 - (void)updateWithCellModel:(WTHForecastCellModel *)cellModel {
-    NSString *imageName = [WTHImageNameFromWeatherDescription imageNameFromWeather:cellModel.imageName];
-    self.forecastImage.image = [UIImage imageNamed:imageName];
+    self.forecastImage.image = [UIImage imageNamed:cellModel.imageName];
     self.temperatureLabel.text = cellModel.temperatureValue;
     self.cityLabel.text = cellModel.mainTitle;
     self.weatherLabel.text = cellModel.detailTitle;
