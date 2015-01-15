@@ -42,13 +42,13 @@ willDisplayHeaderView:(UITableViewHeaderFooterView *)view
 
 - (NSString *)tableView:(UITableView *)tableView
 titleForHeaderInSection:(NSInteger)section {
-    return [self.datasource titleForHeader];
+    return self.datasource.titleForHeader;
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
-    return [self.datasource numberOfRows];
+    return self.datasource.numberOfRows;
 }
 
 

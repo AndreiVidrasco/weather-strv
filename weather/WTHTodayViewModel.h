@@ -8,17 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol WTHTodayViewModelProtocol <NSObject>
-
-- (void)updateInformation;
-
-@end
-
-
 @interface WTHTodayViewModel : NSObject
-
-- (instancetype)initWithDelegate:(id<WTHTodayViewModelProtocol>)delegate;
-- (void)updateValue;
 
 @property (strong, nonatomic, readonly) NSString *weatherImageName;
 @property (strong, nonatomic, readonly) NSString *cityName;

@@ -70,7 +70,7 @@ NSString *const dataBaseName = @"DataModel";
     if (_storeCoordinator) {
         return _storeCoordinator;
     }
-    NSURL *storeURL = [[self documentsDirectory] URLByAppendingPathComponent:[dataBaseName stringByAppendingString:@"sqlite"]];
+    NSURL *storeURL = [[self documentsDirectory] URLByAppendingPathComponent:[dataBaseName stringByAppendingPathExtension:@"sqlite"]];
     
     NSError *error = nil;
     _storeCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];

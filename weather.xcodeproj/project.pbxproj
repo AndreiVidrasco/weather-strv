@@ -23,30 +23,32 @@
 		75919C7F1A644D9B00F8B47E /* WTHForecastViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75919C7E1A644D9B00F8B47E /* WTHForecastViewController.m */; };
 		75919C821A644DA600F8B47E /* WTHSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75919C811A644DA600F8B47E /* WTHSettingsViewController.m */; };
 		75919C891A6453A800F8B47E /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75919C881A6453A800F8B47E /* MainTabBarController.m */; };
-		75919C8C1A6457D000F8B47E /* WTHSettingsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 75919C8B1A6457D000F8B47E /* WTHSettingsTableViewCell.m */; };
-		75919C8F1A64588900F8B47E /* WTHMainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 75919C8E1A64588900F8B47E /* WTHMainTableViewCell.m */; };
-		75919C951A64612600F8B47E /* SettingsHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 75919C941A64612600F8B47E /* SettingsHandler.m */; };
 		75919C981A64663200F8B47E /* WTHSettingsDatasource.m in Sources */ = {isa = PBXBuildFile; fileRef = 75919C971A64663200F8B47E /* WTHSettingsDatasource.m */; };
-		75919C9B1A64667000F8B47E /* WTHSettingsCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 75919C9A1A64667000F8B47E /* WTHSettingsCellModel.m */; };
 		75ADD3C71A6435D8002F1879 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 75ADD3C61A6435D8002F1879 /* main.m */; };
 		75ADD3CA1A6435D8002F1879 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 75ADD3C91A6435D8002F1879 /* AppDelegate.m */; };
 		75ADD3D01A6435D8002F1879 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75ADD3CE1A6435D8002F1879 /* Main.storyboard */; };
 		75ADD3D21A6435D8002F1879 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75ADD3D11A6435D8002F1879 /* Images.xcassets */; };
 		75ADD3D51A6435D8002F1879 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75ADD3D31A6435D8002F1879 /* LaunchScreen.xib */; };
 		75ADD3E11A6435D8002F1879 /* weatherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 75ADD3E01A6435D8002F1879 /* weatherTests.m */; };
-		75D2EB391A67948900D713A7 /* SRCSearchInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75D2EB381A67948900D713A7 /* SRCSearchInputViewController.m */; };
-		75D2EB421A67955100D713A7 /* GeoLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 75D2EB411A67955100D713A7 /* GeoLocation.m */; };
-		75D2EB451A67955F00D713A7 /* AutocompleteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 75D2EB441A67955F00D713A7 /* AutocompleteCell.m */; };
-		75D2EB681A67B33700D713A7 /* GMapsRequester.m in Sources */ = {isa = PBXBuildFile; fileRef = 75D2EB671A67B33700D713A7 /* GMapsRequester.m */; };
-		75E01D631A66E43F006DD69F /* WTHNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E01D601A66E43F006DD69F /* WTHNetwork.m */; };
-		75E01D641A66E43F006DD69F /* WTHLocationTrackingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E01D621A66E43F006DD69F /* WTHLocationTrackingManager.m */; };
-		75E01D671A66E5EE006DD69F /* WTHForecastDetailedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E01D661A66E5EE006DD69F /* WTHForecastDetailedCell.m */; };
-		75E01D6A1A66EA0B006DD69F /* WTHForecastDatasource.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E01D691A66EA0B006DD69F /* WTHForecastDatasource.m */; };
-		75E01D6D1A66EA36006DD69F /* WTHForecastLocationsDatasource.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E01D6C1A66EA36006DD69F /* WTHForecastLocationsDatasource.m */; };
-		75E01D701A66EA43006DD69F /* WTHForecastCitiesDatasource.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E01D6F1A66EA43006DD69F /* WTHForecastCitiesDatasource.m */; };
-		75E01D731A66EAD1006DD69F /* WTHForecastCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E01D721A66EAD1006DD69F /* WTHForecastCellModel.m */; };
+		75D2EB391A67948900D713A7 /* WTHSearchInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75D2EB381A67948900D713A7 /* WTHSearchInputViewController.m */; };
 		75E01D761A66F1AA006DD69F /* WTHTodayViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E01D751A66F1AA006DD69F /* WTHTodayViewModel.m */; };
-		75E01D791A66F99E006DD69F /* WTHTodayResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E01D781A66F99E006DD69F /* WTHTodayResponseModel.m */; };
+		75E363991A6849E20086DAAC /* WTHAutocompleteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E363921A6849E20086DAAC /* WTHAutocompleteCell.m */; };
+		75E3639A1A6849E20086DAAC /* WTHForecastDetailedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E363941A6849E20086DAAC /* WTHForecastDetailedCell.m */; };
+		75E3639B1A6849E20086DAAC /* WTHMainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E363961A6849E20086DAAC /* WTHMainTableViewCell.m */; };
+		75E3639C1A6849E20086DAAC /* WTHSettingsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E363981A6849E20086DAAC /* WTHSettingsTableViewCell.m */; };
+		75E363A61A684A180086DAAC /* WTHForecastCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E3639F1A684A180086DAAC /* WTHForecastCellModel.m */; };
+		75E363A71A684A180086DAAC /* WTHGeoLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E363A11A684A180086DAAC /* WTHGeoLocation.m */; };
+		75E363A81A684A180086DAAC /* WTHSettingsCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E363A31A684A180086DAAC /* WTHSettingsCellModel.m */; };
+		75E363B31A684A2F0086DAAC /* WTHGMapsRequester.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E363AC1A684A2F0086DAAC /* WTHGMapsRequester.m */; };
+		75E363B41A684A2F0086DAAC /* WTHLocationTrackingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E363AE1A684A2F0086DAAC /* WTHLocationTrackingManager.m */; };
+		75E363B51A684A2F0086DAAC /* WTHNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E363B01A684A2F0086DAAC /* WTHNetwork.m */; };
+		75E363B61A684A2F0086DAAC /* WTHSettingsHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E363B21A684A2F0086DAAC /* WTHSettingsHandler.m */; };
+		75E363B91A684AD30086DAAC /* WTHLocationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E363B81A684AD30086DAAC /* WTHLocationsViewController.m */; };
+		75E363BF1A685ED20086DAAC /* WTHCurrentLocationInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E363BE1A685ED20086DAAC /* WTHCurrentLocationInformation.m */; };
+		75E363C21A685F350086DAAC /* WTHImageNameFromWeatherDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E363C11A685F350086DAAC /* WTHImageNameFromWeatherDescription.m */; };
+		75E363C51A686CCB0086DAAC /* LocationEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E363C41A686CCB0086DAAC /* LocationEntity.m */; };
+		75E363C81A686D940086DAAC /* WTHLocationsStorageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E363C71A686D940086DAAC /* WTHLocationsStorageManager.m */; };
+		75E363CB1A686FA90086DAAC /* WTHLocationsDatasource.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E363CA1A686FA90086DAAC /* WTHLocationsDatasource.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,16 +89,8 @@
 		75919C861A64531200F8B47E /* weather-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "weather-Prefix.pch"; sourceTree = "<group>"; };
 		75919C871A6453A800F8B47E /* MainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarController.h; sourceTree = "<group>"; };
 		75919C881A6453A800F8B47E /* MainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarController.m; sourceTree = "<group>"; };
-		75919C8A1A6457D000F8B47E /* WTHSettingsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHSettingsTableViewCell.h; sourceTree = "<group>"; };
-		75919C8B1A6457D000F8B47E /* WTHSettingsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHSettingsTableViewCell.m; sourceTree = "<group>"; };
-		75919C8D1A64588900F8B47E /* WTHMainTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHMainTableViewCell.h; sourceTree = "<group>"; };
-		75919C8E1A64588900F8B47E /* WTHMainTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHMainTableViewCell.m; sourceTree = "<group>"; };
-		75919C931A64612600F8B47E /* SettingsHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsHandler.h; sourceTree = "<group>"; };
-		75919C941A64612600F8B47E /* SettingsHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsHandler.m; sourceTree = "<group>"; };
 		75919C961A64663200F8B47E /* WTHSettingsDatasource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHSettingsDatasource.h; sourceTree = "<group>"; };
 		75919C971A64663200F8B47E /* WTHSettingsDatasource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHSettingsDatasource.m; sourceTree = "<group>"; };
-		75919C991A64667000F8B47E /* WTHSettingsCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHSettingsCellModel.h; sourceTree = "<group>"; };
-		75919C9A1A64667000F8B47E /* WTHSettingsCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHSettingsCellModel.m; sourceTree = "<group>"; };
 		75ADD3C11A6435D8002F1879 /* weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75ADD3C51A6435D8002F1879 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		75ADD3C61A6435D8002F1879 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -108,32 +102,44 @@
 		75ADD3DA1A6435D8002F1879 /* weatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = weatherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		75ADD3DF1A6435D8002F1879 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		75ADD3E01A6435D8002F1879 /* weatherTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = weatherTests.m; sourceTree = "<group>"; };
-		75D2EB371A67948900D713A7 /* SRCSearchInputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRCSearchInputViewController.h; sourceTree = "<group>"; };
-		75D2EB381A67948900D713A7 /* SRCSearchInputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRCSearchInputViewController.m; sourceTree = "<group>"; };
-		75D2EB401A67955100D713A7 /* GeoLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoLocation.h; sourceTree = "<group>"; };
-		75D2EB411A67955100D713A7 /* GeoLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeoLocation.m; sourceTree = "<group>"; };
-		75D2EB431A67955F00D713A7 /* AutocompleteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutocompleteCell.h; sourceTree = "<group>"; };
-		75D2EB441A67955F00D713A7 /* AutocompleteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutocompleteCell.m; sourceTree = "<group>"; };
-		75D2EB661A67B33700D713A7 /* GMapsRequester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMapsRequester.h; sourceTree = "<group>"; };
-		75D2EB671A67B33700D713A7 /* GMapsRequester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMapsRequester.m; sourceTree = "<group>"; };
-		75E01D5F1A66E43F006DD69F /* WTHNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHNetwork.h; sourceTree = "<group>"; };
-		75E01D601A66E43F006DD69F /* WTHNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHNetwork.m; sourceTree = "<group>"; };
-		75E01D611A66E43F006DD69F /* WTHLocationTrackingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHLocationTrackingManager.h; sourceTree = "<group>"; };
-		75E01D621A66E43F006DD69F /* WTHLocationTrackingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHLocationTrackingManager.m; sourceTree = "<group>"; };
-		75E01D651A66E5EE006DD69F /* WTHForecastDetailedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHForecastDetailedCell.h; sourceTree = "<group>"; };
-		75E01D661A66E5EE006DD69F /* WTHForecastDetailedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHForecastDetailedCell.m; sourceTree = "<group>"; };
-		75E01D681A66EA0B006DD69F /* WTHForecastDatasource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHForecastDatasource.h; sourceTree = "<group>"; };
-		75E01D691A66EA0B006DD69F /* WTHForecastDatasource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHForecastDatasource.m; sourceTree = "<group>"; };
-		75E01D6B1A66EA36006DD69F /* WTHForecastLocationsDatasource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHForecastLocationsDatasource.h; sourceTree = "<group>"; };
-		75E01D6C1A66EA36006DD69F /* WTHForecastLocationsDatasource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHForecastLocationsDatasource.m; sourceTree = "<group>"; };
-		75E01D6E1A66EA43006DD69F /* WTHForecastCitiesDatasource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHForecastCitiesDatasource.h; sourceTree = "<group>"; };
-		75E01D6F1A66EA43006DD69F /* WTHForecastCitiesDatasource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHForecastCitiesDatasource.m; sourceTree = "<group>"; };
-		75E01D711A66EAD1006DD69F /* WTHForecastCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHForecastCellModel.h; sourceTree = "<group>"; };
-		75E01D721A66EAD1006DD69F /* WTHForecastCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHForecastCellModel.m; sourceTree = "<group>"; };
+		75D2EB371A67948900D713A7 /* WTHSearchInputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHSearchInputViewController.h; sourceTree = "<group>"; };
+		75D2EB381A67948900D713A7 /* WTHSearchInputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHSearchInputViewController.m; sourceTree = "<group>"; };
 		75E01D741A66F1AA006DD69F /* WTHTodayViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHTodayViewModel.h; sourceTree = "<group>"; };
 		75E01D751A66F1AA006DD69F /* WTHTodayViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHTodayViewModel.m; sourceTree = "<group>"; };
-		75E01D771A66F99E006DD69F /* WTHTodayResponseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHTodayResponseModel.h; sourceTree = "<group>"; };
-		75E01D781A66F99E006DD69F /* WTHTodayResponseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHTodayResponseModel.m; sourceTree = "<group>"; };
+		75E363911A6849E20086DAAC /* WTHAutocompleteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHAutocompleteCell.h; sourceTree = "<group>"; };
+		75E363921A6849E20086DAAC /* WTHAutocompleteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHAutocompleteCell.m; sourceTree = "<group>"; };
+		75E363931A6849E20086DAAC /* WTHForecastDetailedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHForecastDetailedCell.h; sourceTree = "<group>"; };
+		75E363941A6849E20086DAAC /* WTHForecastDetailedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHForecastDetailedCell.m; sourceTree = "<group>"; };
+		75E363951A6849E20086DAAC /* WTHMainTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHMainTableViewCell.h; sourceTree = "<group>"; };
+		75E363961A6849E20086DAAC /* WTHMainTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHMainTableViewCell.m; sourceTree = "<group>"; };
+		75E363971A6849E20086DAAC /* WTHSettingsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHSettingsTableViewCell.h; sourceTree = "<group>"; };
+		75E363981A6849E20086DAAC /* WTHSettingsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHSettingsTableViewCell.m; sourceTree = "<group>"; };
+		75E3639E1A684A180086DAAC /* WTHForecastCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHForecastCellModel.h; sourceTree = "<group>"; };
+		75E3639F1A684A180086DAAC /* WTHForecastCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHForecastCellModel.m; sourceTree = "<group>"; };
+		75E363A01A684A180086DAAC /* WTHGeoLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHGeoLocation.h; sourceTree = "<group>"; };
+		75E363A11A684A180086DAAC /* WTHGeoLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHGeoLocation.m; sourceTree = "<group>"; };
+		75E363A21A684A180086DAAC /* WTHSettingsCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHSettingsCellModel.h; sourceTree = "<group>"; };
+		75E363A31A684A180086DAAC /* WTHSettingsCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHSettingsCellModel.m; sourceTree = "<group>"; };
+		75E363AB1A684A2F0086DAAC /* WTHGMapsRequester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHGMapsRequester.h; sourceTree = "<group>"; };
+		75E363AC1A684A2F0086DAAC /* WTHGMapsRequester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHGMapsRequester.m; sourceTree = "<group>"; };
+		75E363AD1A684A2F0086DAAC /* WTHLocationTrackingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHLocationTrackingManager.h; sourceTree = "<group>"; };
+		75E363AE1A684A2F0086DAAC /* WTHLocationTrackingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHLocationTrackingManager.m; sourceTree = "<group>"; };
+		75E363AF1A684A2F0086DAAC /* WTHNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHNetwork.h; sourceTree = "<group>"; };
+		75E363B01A684A2F0086DAAC /* WTHNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHNetwork.m; sourceTree = "<group>"; };
+		75E363B11A684A2F0086DAAC /* WTHSettingsHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHSettingsHandler.h; sourceTree = "<group>"; };
+		75E363B21A684A2F0086DAAC /* WTHSettingsHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHSettingsHandler.m; sourceTree = "<group>"; };
+		75E363B71A684AD30086DAAC /* WTHLocationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHLocationsViewController.h; sourceTree = "<group>"; };
+		75E363B81A684AD30086DAAC /* WTHLocationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHLocationsViewController.m; sourceTree = "<group>"; };
+		75E363BD1A685ED20086DAAC /* WTHCurrentLocationInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHCurrentLocationInformation.h; sourceTree = "<group>"; };
+		75E363BE1A685ED20086DAAC /* WTHCurrentLocationInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHCurrentLocationInformation.m; sourceTree = "<group>"; };
+		75E363C01A685F350086DAAC /* WTHImageNameFromWeatherDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHImageNameFromWeatherDescription.h; sourceTree = "<group>"; };
+		75E363C11A685F350086DAAC /* WTHImageNameFromWeatherDescription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHImageNameFromWeatherDescription.m; sourceTree = "<group>"; };
+		75E363C31A686CCB0086DAAC /* LocationEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationEntity.h; sourceTree = "<group>"; };
+		75E363C41A686CCB0086DAAC /* LocationEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationEntity.m; sourceTree = "<group>"; };
+		75E363C61A686D940086DAAC /* WTHLocationsStorageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHLocationsStorageManager.h; sourceTree = "<group>"; };
+		75E363C71A686D940086DAAC /* WTHLocationsStorageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHLocationsStorageManager.m; sourceTree = "<group>"; };
+		75E363C91A686FA90086DAAC /* WTHLocationsDatasource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHLocationsDatasource.h; sourceTree = "<group>"; };
+		75E363CA1A686FA90086DAAC /* WTHLocationsDatasource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHLocationsDatasource.m; sourceTree = "<group>"; };
 		85C7E0D27C8BB08D12C93E8E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		8B68116AC9882A1A13741F31 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -180,8 +186,12 @@
 				7519C8E21A67F11F0043DF40 /* DataModel.xcdatamodel */,
 				7519C8E31A67F11F0043DF40 /* SearchQuerryEntity.h */,
 				7519C8E41A67F11F0043DF40 /* SearchQuerryEntity.m */,
+				75E363C31A686CCB0086DAAC /* LocationEntity.h */,
+				75E363C41A686CCB0086DAAC /* LocationEntity.m */,
 				7519C8E51A67F11F0043DF40 /* SRCFrequentSuggestionsManager.h */,
 				7519C8E61A67F11F0043DF40 /* SRCFrequentSuggestionsManager.m */,
+				75E363C61A686D940086DAAC /* WTHLocationsStorageManager.h */,
+				75E363C71A686D940086DAAC /* WTHLocationsStorageManager.m */,
 				7519C8E71A67F11F0043DF40 /* WTHStorageManager.h */,
 				7519C8E81A67F11F0043DF40 /* WTHStorageManager.m */,
 			);
@@ -235,54 +245,31 @@
 		75ADD3C31A6435D8002F1879 /* weather */ = {
 			isa = PBXGroup;
 			children = (
+				75E363AA1A684A2F0086DAAC /* Managers */,
+				75E3639D1A684A180086DAAC /* Models */,
+				75E363901A6849E20086DAAC /* Cells */,
 				7519C8ED1A67F2A60043DF40 /* Categories */,
 				7519C8E11A67F11F0043DF40 /* Stogare */,
-				75D2EB431A67955F00D713A7 /* AutocompleteCell.h */,
-				75D2EB441A67955F00D713A7 /* AutocompleteCell.m */,
-				75D2EB401A67955100D713A7 /* GeoLocation.h */,
-				75D2EB411A67955100D713A7 /* GeoLocation.m */,
-				75D2EB661A67B33700D713A7 /* GMapsRequester.h */,
-				75D2EB671A67B33700D713A7 /* GMapsRequester.m */,
-				75D2EB371A67948900D713A7 /* SRCSearchInputViewController.h */,
-				75D2EB381A67948900D713A7 /* SRCSearchInputViewController.m */,
-				75ADD3C81A6435D8002F1879 /* AppDelegate.h */,
-				75ADD3C91A6435D8002F1879 /* AppDelegate.m */,
 				75919C871A6453A800F8B47E /* MainTabBarController.h */,
 				75919C881A6453A800F8B47E /* MainTabBarController.m */,
-				75919C8D1A64588900F8B47E /* WTHMainTableViewCell.h */,
-				75919C8E1A64588900F8B47E /* WTHMainTableViewCell.m */,
 				75919C7A1A644D8E00F8B47E /* WTHTodayViewController.h */,
 				75919C7B1A644D8E00F8B47E /* WTHTodayViewController.m */,
-				75E01D741A66F1AA006DD69F /* WTHTodayViewModel.h */,
-				75E01D751A66F1AA006DD69F /* WTHTodayViewModel.m */,
-				75E01D771A66F99E006DD69F /* WTHTodayResponseModel.h */,
-				75E01D781A66F99E006DD69F /* WTHTodayResponseModel.m */,
 				75919C7D1A644D9B00F8B47E /* WTHForecastViewController.h */,
 				75919C7E1A644D9B00F8B47E /* WTHForecastViewController.m */,
-				75E01D681A66EA0B006DD69F /* WTHForecastDatasource.h */,
-				75E01D691A66EA0B006DD69F /* WTHForecastDatasource.m */,
-				75E01D6B1A66EA36006DD69F /* WTHForecastLocationsDatasource.h */,
-				75E01D6C1A66EA36006DD69F /* WTHForecastLocationsDatasource.m */,
-				75E01D6E1A66EA43006DD69F /* WTHForecastCitiesDatasource.h */,
-				75E01D6F1A66EA43006DD69F /* WTHForecastCitiesDatasource.m */,
-				75E01D711A66EAD1006DD69F /* WTHForecastCellModel.h */,
-				75E01D721A66EAD1006DD69F /* WTHForecastCellModel.m */,
-				75E01D651A66E5EE006DD69F /* WTHForecastDetailedCell.h */,
-				75E01D661A66E5EE006DD69F /* WTHForecastDetailedCell.m */,
+				75E363B71A684AD30086DAAC /* WTHLocationsViewController.h */,
+				75E363B81A684AD30086DAAC /* WTHLocationsViewController.m */,
+				75D2EB371A67948900D713A7 /* WTHSearchInputViewController.h */,
+				75D2EB381A67948900D713A7 /* WTHSearchInputViewController.m */,
 				75919C801A644DA600F8B47E /* WTHSettingsViewController.h */,
 				75919C811A644DA600F8B47E /* WTHSettingsViewController.m */,
+				75ADD3C81A6435D8002F1879 /* AppDelegate.h */,
+				75ADD3C91A6435D8002F1879 /* AppDelegate.m */,
+				75E01D741A66F1AA006DD69F /* WTHTodayViewModel.h */,
+				75E01D751A66F1AA006DD69F /* WTHTodayViewModel.m */,
+				75E363C91A686FA90086DAAC /* WTHLocationsDatasource.h */,
+				75E363CA1A686FA90086DAAC /* WTHLocationsDatasource.m */,
 				75919C961A64663200F8B47E /* WTHSettingsDatasource.h */,
 				75919C971A64663200F8B47E /* WTHSettingsDatasource.m */,
-				75919C991A64667000F8B47E /* WTHSettingsCellModel.h */,
-				75919C9A1A64667000F8B47E /* WTHSettingsCellModel.m */,
-				75919C8A1A6457D000F8B47E /* WTHSettingsTableViewCell.h */,
-				75919C8B1A6457D000F8B47E /* WTHSettingsTableViewCell.m */,
-				75E01D5F1A66E43F006DD69F /* WTHNetwork.h */,
-				75E01D601A66E43F006DD69F /* WTHNetwork.m */,
-				75E01D611A66E43F006DD69F /* WTHLocationTrackingManager.h */,
-				75E01D621A66E43F006DD69F /* WTHLocationTrackingManager.m */,
-				75919C931A64612600F8B47E /* SettingsHandler.h */,
-				75919C941A64612600F8B47E /* SettingsHandler.m */,
 				75ADD3CE1A6435D8002F1879 /* Main.storyboard */,
 				75ADD3D11A6435D8002F1879 /* Images.xcassets */,
 				75ADD3D31A6435D8002F1879 /* LaunchScreen.xib */,
@@ -317,6 +304,53 @@
 				75ADD3DF1A6435D8002F1879 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		75E363901A6849E20086DAAC /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				75E363951A6849E20086DAAC /* WTHMainTableViewCell.h */,
+				75E363961A6849E20086DAAC /* WTHMainTableViewCell.m */,
+				75E363911A6849E20086DAAC /* WTHAutocompleteCell.h */,
+				75E363921A6849E20086DAAC /* WTHAutocompleteCell.m */,
+				75E363931A6849E20086DAAC /* WTHForecastDetailedCell.h */,
+				75E363941A6849E20086DAAC /* WTHForecastDetailedCell.m */,
+				75E363971A6849E20086DAAC /* WTHSettingsTableViewCell.h */,
+				75E363981A6849E20086DAAC /* WTHSettingsTableViewCell.m */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		75E3639D1A684A180086DAAC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				75E3639E1A684A180086DAAC /* WTHForecastCellModel.h */,
+				75E3639F1A684A180086DAAC /* WTHForecastCellModel.m */,
+				75E363A01A684A180086DAAC /* WTHGeoLocation.h */,
+				75E363A11A684A180086DAAC /* WTHGeoLocation.m */,
+				75E363A21A684A180086DAAC /* WTHSettingsCellModel.h */,
+				75E363A31A684A180086DAAC /* WTHSettingsCellModel.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		75E363AA1A684A2F0086DAAC /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				75E363BD1A685ED20086DAAC /* WTHCurrentLocationInformation.h */,
+				75E363BE1A685ED20086DAAC /* WTHCurrentLocationInformation.m */,
+				75E363AB1A684A2F0086DAAC /* WTHGMapsRequester.h */,
+				75E363AC1A684A2F0086DAAC /* WTHGMapsRequester.m */,
+				75E363AD1A684A2F0086DAAC /* WTHLocationTrackingManager.h */,
+				75E363AE1A684A2F0086DAAC /* WTHLocationTrackingManager.m */,
+				75E363AF1A684A2F0086DAAC /* WTHNetwork.h */,
+				75E363B01A684A2F0086DAAC /* WTHNetwork.m */,
+				75E363B11A684A2F0086DAAC /* WTHSettingsHandler.h */,
+				75E363B21A684A2F0086DAAC /* WTHSettingsHandler.m */,
+				75E363C01A685F350086DAAC /* WTHImageNameFromWeatherDescription.h */,
+				75E363C11A685F350086DAAC /* WTHImageNameFromWeatherDescription.m */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -458,37 +492,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75E363BF1A685ED20086DAAC /* WTHCurrentLocationInformation.m in Sources */,
+				75E363C81A686D940086DAAC /* WTHLocationsStorageManager.m in Sources */,
 				75919C7C1A644D8E00F8B47E /* WTHTodayViewController.m in Sources */,
 				75919C891A6453A800F8B47E /* MainTabBarController.m in Sources */,
+				75E363A81A684A180086DAAC /* WTHSettingsCellModel.m in Sources */,
 				7519C8F61A67F2A60043DF40 /* UIFont+GlobalFont.m in Sources */,
 				75ADD3CA1A6435D8002F1879 /* AppDelegate.m in Sources */,
-				75919C8F1A64588900F8B47E /* WTHMainTableViewCell.m in Sources */,
-				75D2EB421A67955100D713A7 /* GeoLocation.m in Sources */,
-				75D2EB391A67948900D713A7 /* SRCSearchInputViewController.m in Sources */,
+				75E3639B1A6849E20086DAAC /* WTHMainTableViewCell.m in Sources */,
+				75D2EB391A67948900D713A7 /* WTHSearchInputViewController.m in Sources */,
+				75E3639A1A6849E20086DAAC /* WTHForecastDetailedCell.m in Sources */,
 				7519C8EB1A67F11F0043DF40 /* SRCFrequentSuggestionsManager.m in Sources */,
 				7519C8EC1A67F11F0043DF40 /* WTHStorageManager.m in Sources */,
 				75E01D761A66F1AA006DD69F /* WTHTodayViewModel.m in Sources */,
-				75E01D701A66EA43006DD69F /* WTHForecastCitiesDatasource.m in Sources */,
-				75919C8C1A6457D000F8B47E /* WTHSettingsTableViewCell.m in Sources */,
-				75E01D6D1A66EA36006DD69F /* WTHForecastLocationsDatasource.m in Sources */,
+				75E363B61A684A2F0086DAAC /* WTHSettingsHandler.m in Sources */,
 				7519C8F41A67F2A60043DF40 /* NSDictionary+SafeObjects.m in Sources */,
-				75919C9B1A64667000F8B47E /* WTHSettingsCellModel.m in Sources */,
-				75D2EB681A67B33700D713A7 /* GMapsRequester.m in Sources */,
+				75E363B31A684A2F0086DAAC /* WTHGMapsRequester.m in Sources */,
+				75E3639C1A6849E20086DAAC /* WTHSettingsTableViewCell.m in Sources */,
 				75ADD3C71A6435D8002F1879 /* main.m in Sources */,
-				75D2EB451A67955F00D713A7 /* AutocompleteCell.m in Sources */,
-				75E01D6A1A66EA0B006DD69F /* WTHForecastDatasource.m in Sources */,
-				75E01D641A66E43F006DD69F /* WTHLocationTrackingManager.m in Sources */,
+				75E363CB1A686FA90086DAAC /* WTHLocationsDatasource.m in Sources */,
+				75E363B91A684AD30086DAAC /* WTHLocationsViewController.m in Sources */,
 				7519C8E91A67F11F0043DF40 /* DataModel.xcdatamodel in Sources */,
-				75919C951A64612600F8B47E /* SettingsHandler.m in Sources */,
-				75E01D671A66E5EE006DD69F /* WTHForecastDetailedCell.m in Sources */,
+				75E363A71A684A180086DAAC /* WTHGeoLocation.m in Sources */,
+				75E363C51A686CCB0086DAAC /* LocationEntity.m in Sources */,
 				75919C7F1A644D9B00F8B47E /* WTHForecastViewController.m in Sources */,
-				75E01D791A66F99E006DD69F /* WTHTodayResponseModel.m in Sources */,
-				75E01D631A66E43F006DD69F /* WTHNetwork.m in Sources */,
+				75E363B41A684A2F0086DAAC /* WTHLocationTrackingManager.m in Sources */,
 				75919C981A64663200F8B47E /* WTHSettingsDatasource.m in Sources */,
 				7519C8F51A67F2A60043DF40 /* UIColor+GlobalColors.m in Sources */,
 				7519C8EA1A67F11F0043DF40 /* SearchQuerryEntity.m in Sources */,
-				75E01D731A66EAD1006DD69F /* WTHForecastCellModel.m in Sources */,
+				75E363B51A684A2F0086DAAC /* WTHNetwork.m in Sources */,
 				75919C821A644DA600F8B47E /* WTHSettingsViewController.m in Sources */,
+				75E363A61A684A180086DAAC /* WTHForecastCellModel.m in Sources */,
+				75E363C21A685F350086DAAC /* WTHImageNameFromWeatherDescription.m in Sources */,
+				75E363991A6849E20086DAAC /* WTHAutocompleteCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

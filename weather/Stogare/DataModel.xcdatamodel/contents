@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="SearchQuerryEntity" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="14B25" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="DataModel" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="14B25" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="LocationEntity" representedClassName="LocationEntity" syncable="YES">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+    </entity>
     <entity name="SearchQuerryEntity" representedClassName="SearchQuerryEntity" syncable="YES">
         <attribute name="searchQueery" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="SearchQuerryEntity" positionX="-54" positionY="-9" width="128" height="60"/>
+        <element name="LocationEntity" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="SearchQuerryEntity" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

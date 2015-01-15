@@ -7,7 +7,7 @@
 //
 
 #import "WTHSettingsDatasource.h"
-#import "SettingsHandler.h"
+#import "WTHSettingsHandler.h"
 
 typedef NS_ENUM (NSInteger, RowIndexes) {
     RowIndexesMetric,
@@ -16,136 +16,105 @@ typedef NS_ENUM (NSInteger, RowIndexes) {
 
 @interface WTHSettingsDatasource ()
 
-@property (strong, nonatomic) WTHSettingsCellModel *firstCellModel;
-@property (strong, nonatomic) WTHSettingsCellModel *secondeCellModel;
+@property (strong, nonatomic) NSArray *datasource;
 
 @end
 
 @implementation WTHSettingsDatasource
-#warning Refactor This SHIT!!!
+
+- (NSArray *)datasource {
+    if (!_datasource) {
+        WTHSettingsCellModel *firstCellModel = [[WTHSettingsCellModel alloc] initWithMainTitle:NSLocalizedString(@"Unit of length", nil)];
+        WTHSettingsCellModel *secondeCellModel = [[WTHSettingsCellModel alloc] initWithMainTitle:NSLocalizedString(@"Unit of temperature", nil)];
+        _datasource = @[firstCellModel, secondeCellModel];
+    }
+
+    return _datasource;
+}
+
+
 - (NSString *)titleForHeader {
     return NSLocalizedString(@"General", nil);
 }
 
 
 - (NSInteger)numberOfRows {
-    return 2;
+    return [self.datasource count];
 }
 
 
 - (WTHSettingsCellModel *)cellModelForRow:(NSInteger)row {
-    return row == RowIndexesMetric ? self.firstCellModel : self.secondeCellModel;
+    [self updateInformation];
+    return self.datasource[row];
 }
 
 
 - (void)changeValueForRow:(NSInteger)row {
     switch (row) {
-        case RowIndexesMetric: {
+        case RowIndexesMetric:
             [self changeMetricToOposite];
             break;
-        }
-
-        case RowIndexesTemperature: {
+        case RowIndexesTemperature:
             [self changeTemperatureToOposite];
-        }
-
-        default: {
+        default:
             break;
-        }
     }
 }
 
 
-- (WTHSettingsCellModel *)firstCellModel {
-    if (!_firstCellModel) {
-        _firstCellModel = [[WTHSettingsCellModel alloc] init];
-        _firstCellModel.mainTitle = NSLocalizedString(@"Unit of length", nil);
-    }
-    MetricUnit unit = [[SettingsHandler sharedHandler] currentMetricUnit];
-    switch (unit) {
-        case MetricUnitMiles: {
-            _firstCellModel.detailTitle = NSLocalizedString(@"Miles", nil);
-            break;
-        }
-
-        case MetricUnitMeters: {
-            _firstCellModel.detailTitle = NSLocalizedString(@"Meters", nil);
-            break;
-        }
-
-        default: {
-            break;
-        }
-    }
-
-    return _firstCellModel;
-}
-
-
-- (WTHSettingsCellModel *)secondeCellModel {
-    if (!_secondeCellModel) {
-        _secondeCellModel = [[WTHSettingsCellModel alloc] init];
-        _secondeCellModel.mainTitle = NSLocalizedString(@"Unit of temperature", nil);
-    }
-    TemperatureUnit unit = [[SettingsHandler sharedHandler] currentTemperatureUnit];
-    switch (unit) {
-        case TemperatureUnitFahrenheit: {
-            _secondeCellModel.detailTitle = NSLocalizedString(@"Fahrenheit", nil);
-            break;
-        }
-
-        case TemperatureUnitCelsius: {
-            _secondeCellModel.detailTitle = NSLocalizedString(@"Celsius", nil);
-            break;
-        }
-
-        default: {
-            break;
-        }
-    }
-
-    return _secondeCellModel;
+- (void)updateInformation {
+    MetricUnit metricUnit = [[WTHSettingsHandler sharedHandler] currentMetricUnit];
+    [self changeDetailValueForModelWithIndex:RowIndexesMetric newValue:[self stringForMetricUnit:metricUnit]];
+    TemperatureUnit tempUnit = [[WTHSettingsHandler sharedHandler] currentTemperatureUnit];
+    [self changeDetailValueForModelWithIndex:RowIndexesTemperature newValue:[self stringForTemperatureUnit:tempUnit]];
 }
 
 
 - (void)changeTemperatureToOposite {
-    TemperatureUnit unit = [[SettingsHandler sharedHandler] currentTemperatureUnit];
-    switch (unit) {
-        case TemperatureUnitCelsius: {
-            [[SettingsHandler sharedHandler] setTemperatureUnit:TemperatureUnitFahrenheit];
-            break;
-        }
-
-        case TemperatureUnitFahrenheit: {
-            [[SettingsHandler sharedHandler] setTemperatureUnit:TemperatureUnitCelsius];
-            break;
-        }
-
-        default: {
-            break;
-        }
-    }
+    TemperatureUnit unit = [[WTHSettingsHandler sharedHandler] currentTemperatureUnit];
+    [WTHSettingsHandler sharedHandler].currentTemperatureUnit = !unit;
 }
 
 
 - (void)changeMetricToOposite {
-    MetricUnit unit = [[SettingsHandler sharedHandler] currentMetricUnit];
+    MetricUnit unit = [[WTHSettingsHandler sharedHandler] currentMetricUnit];
+    [WTHSettingsHandler sharedHandler].currentMetricUnit = !unit;
+}
+
+
+- (void)changeDetailValueForModelWithIndex:(NSInteger)index newValue:(NSString *)value {
+    WTHSettingsCellModel *cellModel = self.datasource[index];
+    cellModel.detailTitle = value;
+}
+
+
+- (NSString *)stringForTemperatureUnit:(TemperatureUnit)unit {
     switch (unit) {
-        case MetricUnitMeters: {
-            [[SettingsHandler sharedHandler] setMetricUnit:MetricUnitMiles];
+        case TemperatureUnitFahrenheit:
+            return NSLocalizedString(@"Fahrenheit", nil);
             break;
-        }
-
-        case MetricUnitMiles: {
-            [[SettingsHandler sharedHandler] setMetricUnit:MetricUnitMeters];
+        case TemperatureUnitCelsius:
+            return NSLocalizedString(@"Celsius", nil);
             break;
-        }
-
-        default: {
+        default:
+            return @"";
             break;
-        }
     }
 }
 
+
+- (NSString *)stringForMetricUnit:(MetricUnit)unit {
+    switch (unit) {
+        case MetricUnitMiles:
+            return NSLocalizedString(@"Miles", nil);
+            break;
+        case MetricUnitMeters:
+            return NSLocalizedString(@"Meters", nil);
+            break;
+        default:
+            return @"";
+            break;
+    }
+}
 
 @end

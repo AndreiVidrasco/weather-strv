@@ -69,7 +69,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="91" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="rSi-Cv-YXO">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="91" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="rSi-Cv-YXO">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <inset key="separatorInset" minX="90" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -153,11 +153,128 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Forecast" image="tabbar_forecast" id="Meh-Cd-LST"/>
-                    <navigationItem key="navigationItem" title="Forecast" id="5Pp-a2-ieX"/>
+                    <navigationItem key="navigationItem" title="Forecast" id="5Pp-a2-ieX">
+                        <barButtonItem key="rightBarButtonItem" image="today_location" id="GM2-L3-cbE">
+                            <connections>
+                                <action selector="location:" destination="JRM-hf-dYi" id="pVs-Eu-QTR"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="rSi-Cv-YXO" id="XNU-s6-kfm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k19-0r-Utw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1657" y="518"/>
+        </scene>
+        <!--Locations-->
+        <scene sceneID="Grd-Ot-4Dg">
+            <objects>
+                <viewController storyboardIdentifier="WTHLocationsViewController" title="Locations" id="QoR-7k-S7x" customClass="WTHLocationsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xNm-MM-pip"/>
+                        <viewControllerLayoutGuide type="bottom" id="xol-5j-Swt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QeG-91-ii1">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="91" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="Y1E-yt-X4C">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <inset key="separatorInset" minX="90" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WTHForecastDetailedCell" id="WeW-2f-Vet" customClass="WTHForecastDetailedCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WeW-2f-Vet" id="UML-bA-6qb">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sHz-fI-SUz">
+                                                    <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eei-G3-aIb">
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" placeholder="YES" id="cXV-Xr-83t"/>
+                                                                <constraint firstAttribute="width" placeholder="YES" id="nSs-CR-zMI"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="sHz-fI-SUz" secondAttribute="height" id="4DV-n2-FPL"/>
+                                                        <constraint firstAttribute="centerX" secondItem="eei-G3-aIb" secondAttribute="centerX" id="jsi-qo-R9f"/>
+                                                        <constraint firstAttribute="centerY" secondItem="eei-G3-aIb" secondAttribute="centerY" id="ndX-Mu-3tb"/>
+                                                    </constraints>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A61-Yt-Lta">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ku-Jv-Mmf">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f78-Ob-tZ0">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="sHz-fI-SUz" secondAttribute="bottom" id="5oH-Re-01T"/>
+                                                <constraint firstAttribute="centerY" secondItem="2ku-Jv-Mmf" secondAttribute="top" constant="-5" id="7ir-UH-coY"/>
+                                                <constraint firstItem="sHz-fI-SUz" firstAttribute="leading" secondItem="UML-bA-6qb" secondAttribute="leading" id="AhQ-Vi-irq"/>
+                                                <constraint firstAttribute="centerY" secondItem="f78-Ob-tZ0" secondAttribute="centerY" id="BVy-Ir-0cG"/>
+                                                <constraint firstAttribute="trailing" secondItem="f78-Ob-tZ0" secondAttribute="trailing" constant="20" id="M1J-en-b7y"/>
+                                                <constraint firstItem="A61-Yt-Lta" firstAttribute="leading" secondItem="UML-bA-6qb" secondAttribute="leading" constant="100" id="O62-m2-Wru"/>
+                                                <constraint firstItem="sHz-fI-SUz" firstAttribute="top" secondItem="UML-bA-6qb" secondAttribute="top" id="W2U-qI-8Hh"/>
+                                                <constraint firstItem="A61-Yt-Lta" firstAttribute="leading" secondItem="2ku-Jv-Mmf" secondAttribute="leading" id="dW7-Qy-M75"/>
+                                                <constraint firstAttribute="centerY" secondItem="A61-Yt-Lta" secondAttribute="bottom" constant="5" id="o8e-R2-Fkt"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="cityLabel" destination="A61-Yt-Lta" id="EXP-hN-9f9"/>
+                                            <outlet property="forecastImage" destination="eei-G3-aIb" id="S0R-2b-mqw"/>
+                                            <outlet property="temperatureLabel" destination="f78-Ob-tZ0" id="H7J-ee-RHv"/>
+                                            <outlet property="weatherLabel" destination="2ku-Jv-Mmf" id="Tr6-z3-9oy"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="QoR-7k-S7x" id="lex-UE-uHC"/>
+                                    <outlet property="delegate" destination="QoR-7k-S7x" id="nuM-F8-oCs"/>
+                                </connections>
+                            </tableView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="today_line" translatesAutoresizingMaskIntoConstraints="NO" id="Qch-dU-0kZ">
+                                <rect key="frame" x="0.0" y="64" width="600" height="2"/>
+                            </imageView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="Qch-dU-0kZ" firstAttribute="leading" secondItem="QeG-91-ii1" secondAttribute="leading" id="5sh-TV-rO1"/>
+                            <constraint firstAttribute="trailing" secondItem="Y1E-yt-X4C" secondAttribute="trailing" id="Jj1-fS-Hex"/>
+                            <constraint firstAttribute="trailing" secondItem="Qch-dU-0kZ" secondAttribute="trailing" id="W50-2Y-D8A"/>
+                            <constraint firstAttribute="bottom" secondItem="Y1E-yt-X4C" secondAttribute="bottom" id="eiU-ek-ilx"/>
+                            <constraint firstItem="Y1E-yt-X4C" firstAttribute="top" secondItem="QeG-91-ii1" secondAttribute="top" id="iWu-Te-f2v"/>
+                            <constraint firstItem="Qch-dU-0kZ" firstAttribute="top" secondItem="xNm-MM-pip" secondAttribute="bottom" id="lwh-5L-wC2"/>
+                            <constraint firstItem="Y1E-yt-X4C" firstAttribute="leading" secondItem="QeG-91-ii1" secondAttribute="leading" id="t55-39-nCg"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Locations" id="P4S-T3-Uxz">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="d3H-Mj-j1r">
+                            <connections>
+                                <action selector="close" destination="QoR-7k-S7x" id="HWB-3u-1rt"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <nil key="simulatedTopBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JvR-uB-K8h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2936" y="-132"/>
         </scene>
         <!--Today-->
         <scene sceneID="Egh-aR-YNm">
@@ -304,7 +421,13 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Today" image="tabbar_today" id="uE9-yy-hzW"/>
-                    <navigationItem key="navigationItem" title="Today" id="17z-os-mCi"/>
+                    <navigationItem key="navigationItem" title="Today" id="17z-os-mCi">
+                        <barButtonItem key="rightBarButtonItem" image="today_location" id="823-rm-UEM">
+                            <connections>
+                                <action selector="location:" destination="eOl-4l-jmY" id="Obn-tG-kNC"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="cityName" destination="InW-ue-7u8" id="qrO-Pi-W1A"/>
                         <outlet property="directionLabel" destination="Wrk-TP-NTL" id="3AR-xS-mYd"/>
@@ -419,7 +542,7 @@
         <!--Search Input View Controller-->
         <scene sceneID="oT6-tg-NZc">
             <objects>
-                <viewController storyboardIdentifier="SRCSearchInputViewController" id="ALl-wt-LKL" customClass="SRCSearchInputViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SRCSearchInputViewController" id="ALl-wt-LKL" customClass="WTHSearchInputViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="V6G-Qq-DQr"/>
                         <viewControllerLayoutGuide type="bottom" id="Fxa-Nq-6XG"/>
@@ -433,12 +556,8 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="0.92156862750000001" green="0.92549019610000005" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <imageView key="tableFooterView" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="src_powered_by_google" id="4HZ-Qw-mf3">
-                                    <rect key="frame" x="0.0" y="85" width="600" height="40"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                </imageView>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AutocompleteCell" rowHeight="44" id="5zM-KT-jZj" customClass="AutocompleteCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AutocompleteCell" rowHeight="44" id="5zM-KT-jZj" customClass="WTHAutocompleteCell">
                                         <rect key="frame" x="0.0" y="22" width="320" height="63"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5zM-KT-jZj" id="4Bj-Cy-eaf">
@@ -526,12 +645,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Ma-eo-9qC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1479" y="-819"/>
+            <point key="canvasLocation" x="1657" y="-787"/>
         </scene>
     </scenes>
     <resources>
         <image name="forecast_line" width="234" height="1"/>
-        <image name="src_powered_by_google" width="23" height="23"/>
         <image name="tabbar_forecast" width="23" height="22"/>
         <image name="tabbar_settings" width="23" height="23"/>
         <image name="tabbar_today" width="24" height="24"/>
@@ -539,6 +657,7 @@
         <image name="today_compass" width="17" height="17"/>
         <image name="today_cr" width="22" height="22"/>
         <image name="today_line" width="320" height="2"/>
+        <image name="today_location" width="22" height="14"/>
         <image name="today_rain" width="16" height="19"/>
         <image name="today_sun_big" width="87" height="87"/>
         <image name="today_wind" width="25" height="16"/>

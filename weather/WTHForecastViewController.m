@@ -8,29 +8,75 @@
 
 #import "WTHForecastViewController.h"
 #import "WTHForecastDetailedCell.h"
-#import "WTHForecastDatasource.h"
 #import "WTHForecastCellModel.h"
+#import "WTHLocationsViewController.h"
+#import "WTHCurrentLocationInformation.h"
+#import "WTHLocationTrackingManager.h"
 
 @interface WTHForecastViewController () <UITableViewDataSource, UITableViewDelegate>
-
-@property (strong, nonatomic) WTHForecastDatasource *datasource;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
 
 @end
 
 @implementation WTHForecastViewController
 
+- (void)addRefreshControlToTableView {
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(handleRefresh) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:self.refreshControl];
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self addRefreshControlToTableView];
+}
+
+
+- (void)handleRefresh {
+    [[WTHLocationTrackingManager sharedInstance] startTrackingUser];
+}
+
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(updateInformation)
+                                                 name:WTHNetworkDidReceiveNewCurrentLocationInformation
+                                               object:nil];
+    [self updateInformation];
+}
+
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+
+- (void)updateInformation {
+    [self.refreshControl endRefreshing];
+    [self.tableView reloadData];
+}
+
+
+- (IBAction)location:(id)sender {
+    WTHLocationsViewController *viewController = [WTHLocationsViewController instantiateFromStoryboard];
+    UINavigationController *modalNav = [[UINavigationController alloc] initWithRootViewController:viewController];
+    
+    [self.parentViewController presentViewController:modalNav animated:YES completion:nil];
+}
+
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.datasource numberOfRows];
+    return [[WTHCurrentLocationInformation sharedInformation].nextDaysInformation count];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     WTHForecastDetailedCell *cell = [tableView dequeueReusableCellWithIdentifier:[WTHForecastDetailedCell cellIdentifier]];
-    WTHForecastCellModel *cellModel = [self.datasource cellModelForRow:indexPath.row];
-    cell.forecastImage.image = [UIImage imageNamed:cellModel.imageName];
-    cell.temperatureLabel.text = cellModel.temperatureValue;
-    cell.cityLabel.text = cellModel.mainTitle;
-    cell.weatherLabel.text = cellModel.detailTitle;
+    WTHForecastCellModel *cellModel = [WTHCurrentLocationInformation sharedInformation].nextDaysInformation[indexPath.row];
+    [cell updateWithCellModel:cellModel];
 
     return cell;
 }

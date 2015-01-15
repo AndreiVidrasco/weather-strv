@@ -11,8 +11,8 @@
 
 @interface WTHSettingsDatasource : NSObject
 
-- (NSString *)titleForHeader;
-- (NSInteger)numberOfRows;
+@property (nonatomic, readonly) NSString *titleForHeader;
+@property (nonatomic, readonly) NSInteger numberOfRows;
 - (WTHSettingsCellModel *)cellModelForRow:(NSInteger)row;
 - (void)changeValueForRow:(NSInteger)row;
 

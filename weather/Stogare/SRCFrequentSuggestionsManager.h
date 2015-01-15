@@ -13,6 +13,6 @@
 @interface SRCFrequentSuggestionsManager : WTHStorageManager
 
 - (void)insertQuerryIntoDatabaseIfNew:(NSString *)querry;
-- (NSArray *)fetchRecentSearches;
+@property (nonatomic, readonly) NSArray *fetchRecentSearches;
 
 @end

@@ -11,7 +11,7 @@
 @implementation NSDictionary (SafeObjects)
 
 - (id)safeObjectForKey:(id)aKey {
-    id object = [self objectForKey:aKey];
+    id object = self[aKey];
     if ((NSNull *)object == [NSNull null]) return nil;
     
     return object;
