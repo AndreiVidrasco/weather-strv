@@ -18,6 +18,7 @@
 @property (strong, nonatomic, readonly) NSString *pressure;
 @property (strong, nonatomic, readonly) NSString *windSpeed;
 @property (strong, nonatomic, readonly) NSString *direction;
+@property (assign, nonatomic, readonly) BOOL shouldShowCurrentLocationIcon;
 @property (assign, nonatomic, readonly) BOOL shouldShowInformation;
 
 @end

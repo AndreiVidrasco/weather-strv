@@ -19,6 +19,10 @@ NSString *const dataBaseName = @"DataModel";
 
 @implementation WTHStorageManager
 
++ (instancetype)sharedManager {
+    return nil;
+}
+
 #pragma mark - Public Methods
 
 - (void)saveContext {

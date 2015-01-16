@@ -27,6 +27,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *windLabel;
 @property (weak, nonatomic) IBOutlet UILabel *directionLabel;
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;
+@property (weak, nonatomic) IBOutlet UIImageView *currentLocationIcon;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *centerAlignmentConstraint;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (weak, nonatomic) IBOutlet UIView *loadinView;
+@property (weak, nonatomic) IBOutlet UIView *informationView;
 
 @end
 
@@ -38,6 +43,7 @@
     [super viewDidLoad];
     [[WTHLocationTrackingManager sharedInstance] startTrackingUser];
     [self adjustColorsAndFonts];
+    [self stopLoadingIndicator];
 }
 
 
@@ -68,6 +74,16 @@
 
 
 - (IBAction)share:(id)sender {
+    [self startLoadingIndicator];
+    dispatch_queue_t queue = dispatch_queue_create("openActivityIndicatorQueue", NULL);
+    dispatch_async(queue, ^{
+        NSArray *dataToShare = @[[NSString stringWithFormat:@"%@ - %@", self.viewModel.cityName, self.viewModel.temperature]];
+        UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:dataToShare applicationActivities:nil];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self stopLoadingIndicator];
+            [self presentViewController:activityViewController animated:YES completion:nil];
+        });
+    });
 }
 
 
@@ -79,16 +95,15 @@
 }
 
 
-- (void)searchInputVC:(WTHSearchInputViewController *)viewController didFinishPickingLocation:(WTHGeoLocation *)location {
-    NSLog(@"%@", location.address);
-}
-
-
 #pragma mark - Private Methods
 
 - (void)updateInformation {
-#warning make loading indicator
-    self.view.hidden = !self.viewModel.shouldShowInformation;
+    if (self.viewModel.shouldShowInformation) {
+        [self stopLoadingIndicator];
+    } else {
+        [self startLoadingIndicator];
+    }
+    self.currentLocationIcon.hidden = !self.viewModel.shouldShowCurrentLocationIcon;
     self.weatherImage.image = [UIImage imageNamed:self.viewModel.weatherImageName];
     self.cityName.text = self.viewModel.cityName;
     self.temperatureLabel.text = self.viewModel.temperature;
@@ -118,6 +133,23 @@
     self.windLabel.textColor = [UIColor grayTextColor];
     self.directionLabel.textColor = [UIColor grayTextColor];
     self.shareButton.tintColor = [UIColor orangeButtonColor];
+    if ([UIScreen mainScreen].bounds.size.height < 500) {
+        self.centerAlignmentConstraint.constant = 40;
+    }
+}
+
+
+- (void)startLoadingIndicator {
+    self.informationView.hidden = YES;
+    self.loadinView.hidden = NO;
+    [self.activityIndicator startAnimating];
+}
+
+
+- (void)stopLoadingIndicator {
+    self.informationView.hidden = NO;
+    self.loadinView.hidden = YES;
+    [self.activityIndicator stopAnimating];
 }
 
 @end

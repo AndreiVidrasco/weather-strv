@@ -33,10 +33,16 @@
 }
 
 
-- (CLLocationCoordinate2D)locationForRow:(NSInteger)row {
+- (WTHLocationEntityModel *)entityForForRow:(NSInteger)row {
     NSArray *recentSearches = [[WTHLocationsStorageManager sharedManager] fetchLocations];
+    recentSearches = [[recentSearches reverseObjectEnumerator] allObjects];
     LocationEntity *entity = recentSearches[row];
-    return CLLocationCoordinate2DMake(entity.latitude, entity.longitude);
+    WTHLocationEntityModel *entityModel = [[WTHLocationEntityModel alloc] init];
+    entityModel.latitude = entity.latitude;
+    entityModel.longitude = entity.longitude;
+    entityModel.isCurrentLocation = entity.isCurrentLocation;
+    
+    return entityModel;
 }
 
 
@@ -50,11 +56,11 @@
         cellModel.weatherDescription = entity.weatherDescription;
         cellModel.temperatureValueF = entity.temperatureValueF;
         cellModel.temperatureValueC = entity.temperatureValueC;
-        
+        cellModel.showCurrentLocationIcon = entity.isCurrentLocation;
         [array addObject:cellModel];
     }
     
-    return [NSArray arrayWithArray:array];
+    return [[array reverseObjectEnumerator] allObjects];
 }
 
 @end

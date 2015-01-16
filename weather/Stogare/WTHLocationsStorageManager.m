@@ -24,30 +24,39 @@
 
 - (void)insertLocationIntoDatabaseIfNew:(WTHLocationEntityModel *)location {
     if (!location) return;
-    NSArray *recentSearches = [self fetchLocations];
-    NSInteger indexOfObjectInDatabase = [self indexOfObjectInDatabase:location.address];
-    if (indexOfObjectInDatabase != NSNotFound) {
+    NSInteger indexOfObjectInDatabase = [self indexOfObjectInDatabaseLatitude:location.latitude
+                                                                    longitude:location.longitude
+                                                            isCurrentLocation:location.isCurrentLocation];
+    if (indexOfObjectInDatabase == NSNotFound) {
+        [self insertGeolocationInDatabse:location];
+    } else {
+        NSArray *recentSearches = [self fetchLocations];
         LocationEntity *dbEntity = recentSearches[indexOfObjectInDatabase];
-        [self.managedObjectContext deleteObject:dbEntity];
+        dbEntity.temperatureValueC = location.temperatureValueC;
+        dbEntity.temperatureValueF = location.temperatureValueF;
+        dbEntity.weatherDescription = location.weatherDescription;
+        if (location.isCurrentLocation) {
+            dbEntity.address = location.address;
+        }
+        dbEntity.latitude = location.latitude;
+        dbEntity.longitude = location.longitude;
+        
+        [self.managedObjectContext save:nil];
     }
-    
-    [self insertGeolocationInDatabse:location];
 }
 
 
-- (void)deleteLocationFromDatabase:(WTHLocationEntityModel *)location {
-    if (!location) return;
+- (void)deleteLocationFromDatabaseWithLatitude:(double)latitude longitude:(double)longitude {
     NSArray *recentSearches = [self fetchLocations];
-    NSInteger indexOfObjectInDatabase = [self indexOfObjectInDatabase:location.address];
+    NSInteger indexOfObjectInDatabase = [self indexOfObjectInDatabaseLatitude:latitude
+                                                                    longitude:longitude
+                                                            isCurrentLocation:NO];
     if (indexOfObjectInDatabase == NSNotFound) {
         return;
     }
     LocationEntity *dbEntity = recentSearches[indexOfObjectInDatabase];
     [self.managedObjectContext deleteObject:dbEntity];
     [self.managedObjectContext save:nil];
-}
-- (NSArray *)fetchRecentSearches {
-    return nil;
 }
 
 
@@ -66,23 +75,23 @@
 - (void)insertGeolocationInDatabse:(WTHLocationEntityModel *)location {
     NSManagedObjectContext *context = [self managedObjectContext];
     LocationEntity *insertQuerry = [NSEntityDescription insertNewObjectForEntityForName:[LocationEntity entityName]
-                                                                     inManagedObjectContext:context];
+                                                                 inManagedObjectContext:context];
     insertQuerry.address = location.address;
     insertQuerry.longitude = location.longitude;
     insertQuerry.latitude = location.latitude;
     insertQuerry.weatherDescription = location.weatherDescription;
     insertQuerry.temperatureValueC = location.temperatureValueC;
     insertQuerry.temperatureValueF = location.temperatureValueF;
+    insertQuerry.isCurrentLocation = location.isCurrentLocation;
     [context save:nil];
 }
 
 
-- (NSInteger)indexOfObjectInDatabase:(NSString *)address {
+- (NSInteger)indexOfObjectInDatabaseLatitude:(double)latitude longitude:(double)longitude isCurrentLocation:(BOOL)isCurrentLocation {
     NSArray *recentSearches = [self fetchLocations];
     return [recentSearches indexOfObjectPassingTest:^BOOL(LocationEntity *entity, NSUInteger idx, BOOL *stop) {
-        return [entity.address isEqualToString:address];
+        return (entity.latitude == latitude && entity.longitude == longitude) || (entity.isCurrentLocation && isCurrentLocation);
     }];
 }
-
 
 @end

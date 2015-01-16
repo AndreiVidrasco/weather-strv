@@ -20,5 +20,6 @@
 @property (strong, nonatomic) NSString *temperatureValueF;
 @property (strong, nonatomic) NSString *temperatureValueC;
 
+@property (assign, nonatomic) BOOL showCurrentLocationIcon;
 
 @end

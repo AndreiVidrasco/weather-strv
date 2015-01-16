@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
 @property (weak, nonatomic) IBOutlet UISearchBar *autocompleteSearchBar;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingIndicator;
+@property (weak, nonatomic) IBOutlet UIView *topBar;
 
 @end
 
@@ -38,18 +39,20 @@
 
 
 #pragma mark - View Life Cycle
-#pragma mark -
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setEdgesForExtendedLayout:UIRectEdgeNone];
     self.navigationItem.rightBarButtonItem.tintColor = [UIColor blueTextColor];
     [self displayCurrentLocationAndFrequestSearches];
-    [self fixMissingSeparatorForLastCell];
-    self.navigationItem.rightBarButtonItem.tintColor = [UIColor blueTextColor];
-    self.autocompleteSearchBar.tintColor = [UIColor blueTextColor];
-    self.autocompleteSearchBar.delegate = self;
-    self.autocompleteSearchBar.text = @"";
+    [self adjustVisualSearchBar];
+    
+}
+
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    [self adjustVisualSearchBar];
 }
 
 
@@ -68,7 +71,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     WTHAutocompleteCell *cell = [tableView dequeueReusableCellWithIdentifier:[WTHAutocompleteCell cellIdentifier]];
     [cell updateWithAddress:self.suggestionsList[indexPath.row] query:self.autocompleteSearchBar.text];
-    
     return cell;
 }
 
@@ -89,11 +91,15 @@
 }
 
 
+#pragma mark - Actions
+
 - (IBAction)cancelSearch:(id)sender {
     [self.autocompleteSearchBar resignFirstResponder];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+
+#pragma mark - Private Methods
 
 - (void)displayCurrentLocationAndFrequestSearches {
     self.suggestionsList = [self recentSearchesArray];
@@ -149,15 +155,6 @@
 }
 
 
-- (void)fixMissingSeparatorForLastCell {
-    CGRect frame = self.tableview.tableFooterView.frame;
-    CGRect sepFrame = CGRectMake(0, 0, frame.size.width, 0.5f);
-    UIView *separatorView = [[UIView alloc] initWithFrame:sepFrame];
-    separatorView.backgroundColor = self.tableview.separatorColor;
-    [self.tableview.tableFooterView addSubview:separatorView];
-}
-
-
 - (void)geocodePoint:(NSString *)locationPointName {
     __weak WTHSearchInputViewController *weakSelf = self;
     [[WTHGMapsRequester sharedManager] geocodeString:locationPointName completionBlock:^(WTHGeoLocation *geoLocation) {
@@ -168,6 +165,24 @@
         [weakSelf.autocompleteSearchBar resignFirstResponder];
         [weakSelf dismissViewControllerAnimated:YES completion:nil];
     }];
+}
+
+
+- (void)adjustVisualSearchBar {
+    self.autocompleteSearchBar.scopeBarBackgroundImage = [[UIImage imageNamed:@"location_input"] resizableImageWithCapInsets:UIEdgeInsetsMake(4, 8, 4, 8)];
+    [self.autocompleteSearchBar setImage:[UIImage imageNamed:@"location_search"]
+                        forSearchBarIcon:UISearchBarIconSearch
+                                   state:UIControlStateNormal];
+    [self.autocompleteSearchBar setImage:[UIImage imageNamed:@"location_close"]
+                        forSearchBarIcon:UISearchBarIconClear
+                                   state:UIControlStateNormal];
+    UIView *view = [self.autocompleteSearchBar.subviews firstObject];
+    UIView *backgroundView = [view.subviews firstObject];
+    for (UIView *subSubView in [backgroundView subviews]) {
+        if ([NSStringFromClass([subSubView class]) isEqualToString:@"_UISearchBarScopeBarBackground"]) {
+            [subSubView setFrame:CGRectMake(0, 0, subSubView.frame.size.width, self.autocompleteSearchBar.frame.size.height)];
+        }
+    }
 }
 
 @end

@@ -16,13 +16,10 @@ NSString *const WTHNetworkDidReceiveNewCurrentLocationInformation;
  */
 + (instancetype)sharedInformation;
 /**
- Update Values from dict
- */
-- (void)updateInformationWithDict:(NSDictionary *)dictionary;
-/**
  Make Request to Server with location and Update Location info
  */
-- (void)updateCurrentLocation:(CLLocationCoordinate2D)location;
+- (void)updateCurrentLocation:(CLLocationCoordinate2D)location
+      isDeviceCurrentLocation:(BOOL)isDeviceCurrentLocation;
 
 @property (strong, nonatomic, readonly) NSString *humidity;
 @property (strong, nonatomic, readonly) NSString *precipMM;
@@ -34,8 +31,9 @@ NSString *const WTHNetworkDidReceiveNewCurrentLocationInformation;
 @property (strong, nonatomic, readonly) NSString *windspeedKmph;
 @property (strong, nonatomic, readonly) NSString *windspeedMiles;
 @property (strong, nonatomic, readonly) NSArray *nextDaysInformation;
+@property (strong, nonatomic, readonly) NSString *areaName;
 @property (strong, nonatomic, readonly) NSString *cityName;
+@property (assign, nonatomic, readonly) BOOL shouldShowCurrentLocationIcon;
 @property (assign, nonatomic, readonly) BOOL shouldShowInformation;
-
 
 @end

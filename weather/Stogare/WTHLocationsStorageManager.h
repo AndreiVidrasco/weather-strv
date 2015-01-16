@@ -12,7 +12,7 @@
 @interface WTHLocationsStorageManager : WTHStorageManager
 
 - (void)insertLocationIntoDatabaseIfNew:(WTHLocationEntityModel *)location;
-- (void)deleteLocationFromDatabase:(WTHLocationEntityModel *)location;
+- (void)deleteLocationFromDatabaseWithLatitude:(double)latitude longitude:(double)longitude;
 
 @property (nonatomic, readonly) NSArray *fetchLocations;
 

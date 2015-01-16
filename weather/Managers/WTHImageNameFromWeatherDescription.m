@@ -11,7 +11,7 @@
 @implementation WTHImageNameFromWeatherDescription
 
 + (NSString *)imageNameFromWeather:(NSString *)description {
-    return description;
+    return @"location_sun";//description;
 }
 
 @end

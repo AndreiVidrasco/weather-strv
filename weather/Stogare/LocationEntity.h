@@ -16,6 +16,7 @@
 @property (retain, nonatomic) NSString *weatherDescription;
 @property (retain, nonatomic) NSString *temperatureValueF;
 @property (retain, nonatomic) NSString *temperatureValueC;
+@property (assign, nonatomic) BOOL isCurrentLocation;
 
 + (NSString *)entityName;
 

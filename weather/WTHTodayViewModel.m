@@ -23,9 +23,6 @@
 
 @implementation WTHTodayViewModel
 
-
-#warning Refactor This SHIT!!!
-
 #pragma mark - Geters
 
 - (WTHCurrentLocationInformation *)currentInformation {
@@ -113,6 +110,11 @@
     }
     
     return value;
+}
+
+
+- (BOOL)shouldShowCurrentLocationIcon {
+    return self.currentInformation.shouldShowCurrentLocationIcon;
 }
 
 

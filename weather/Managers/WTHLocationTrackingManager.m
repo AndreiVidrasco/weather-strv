@@ -84,7 +84,9 @@
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     [self stopTrackingUser];
     CLLocation *location = [locations firstObject];
-    [[WTHCurrentLocationInformation sharedInformation] updateCurrentLocation:location.coordinate];
+    [[WTHCurrentLocationInformation sharedInformation] updateCurrentLocation:location.coordinate
+                                                     isDeviceCurrentLocation:YES];
+    [self stopTrackingUser];
 }
 
 

@@ -30,6 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self addRefreshControlToTableView];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
 
@@ -55,6 +56,7 @@
 
 
 - (void)updateInformation {
+    self.navigationItem.title = [WTHCurrentLocationInformation sharedInformation].areaName;
     [self.refreshControl endRefreshing];
     [self.tableView reloadData];
 }

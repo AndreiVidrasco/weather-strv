@@ -22,6 +22,7 @@
 
 @property (strong, nonatomic) WTHLocationsDatasource *datasource;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIView *stickyFooterView;
 
 @end
 
@@ -44,6 +45,21 @@
 }
 
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+}
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    self.tableView.contentInset = UIEdgeInsetsMake([self topLayoutGuide].length,
+                                                   0,
+                                                   [self bottomLayoutGuide].length + CGRectGetHeight(self.stickyFooterView.frame) + 10,
+                                                   0);
+    
+}
+
+
 - (IBAction)addLocation:(id)sender {
     WTHSearchInputViewController *inputVCtrl = [WTHSearchInputViewController instantiateWithDelegate:self];
     UINavigationController *modalNav = [[UINavigationController alloc] initWithRootViewController:inputVCtrl];
@@ -51,6 +67,7 @@
     [self.parentViewController presentViewController:modalNav animated:YES completion:nil];
 
 }
+
 
 - (void)close {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -71,11 +88,23 @@
 }
 
 
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle != UITableViewCellEditingStyleDelete) {
+        return;
+    }
+    WTHLocationEntityModel *entityModel = [self.datasource entityForForRow:indexPath.row];
+    [[WTHLocationsStorageManager sharedManager] deleteLocationFromDatabaseWithLatitude:entityModel.latitude
+                                                                             longitude:entityModel.longitude];
+    [tableView reloadData];
+}
+
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    CLLocationCoordinate2D coordinate = [self.datasource locationForRow:indexPath.row];
-    [[WTHCurrentLocationInformation sharedInformation] updateCurrentLocation:coordinate];
+    WTHLocationEntityModel *entityModel = [self.datasource entityForForRow:indexPath.row];
+    [[WTHCurrentLocationInformation sharedInformation] updateCurrentLocation:CLLocationCoordinate2DMake(entityModel.latitude, entityModel.longitude)
+                                                     isDeviceCurrentLocation:entityModel.isCurrentLocation];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -87,7 +116,9 @@
         model.latitude = location.latitude;
         model.longitude = location.longitude;
         model.address = location.address;
+        model.isCurrentLocation = NO;
         [[WTHLocationsStorageManager sharedManager] insertLocationIntoDatabaseIfNew:model];
+        [self.tableView setContentOffset:CGPointMake(0, -[WTHForecastDetailedCell prefferedHeight] - 20) animated:YES];
         [self.tableView reloadData];
     }];
 }

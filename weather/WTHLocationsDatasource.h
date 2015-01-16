@@ -8,12 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "WTHForecastCellModel.h"
+#import "WTHLocationEntityModel.h"
+
 @import CoreLocation;
 
 @interface WTHLocationsDatasource : NSObject
 
 @property (nonatomic, readonly) NSInteger numberOfRows;
 - (WTHForecastCellModel *)cellModelForRow:(NSInteger)row;
-- (CLLocationCoordinate2D)locationForRow:(NSInteger)row;
+- (WTHLocationEntityModel *)entityForForRow:(NSInteger)row;
 
 @end
