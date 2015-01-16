@@ -22,7 +22,7 @@ NSString *const WTHNetworkDidReceiveNewCurrentLocationInformation;
 /**
  Make Request to Server with location and Update Location info
  */
-- (void)updateCurrentLocation:(CLLocation *)location;
+- (void)updateCurrentLocation:(CLLocationCoordinate2D)location;
 
 @property (strong, nonatomic, readonly) NSString *humidity;
 @property (strong, nonatomic, readonly) NSString *precipMM;
@@ -33,10 +33,8 @@ NSString *const WTHNetworkDidReceiveNewCurrentLocationInformation;
 @property (strong, nonatomic, readonly) NSString *winddir16Point;
 @property (strong, nonatomic, readonly) NSString *windspeedKmph;
 @property (strong, nonatomic, readonly) NSString *windspeedMiles;
-@property (strong, nonatomic, readonly) NSString *areaName;
-@property (strong, nonatomic, readonly) NSString *country;
-@property (strong, nonatomic, readonly) NSString *region;
 @property (strong, nonatomic, readonly) NSArray *nextDaysInformation;
+@property (strong, nonatomic, readonly) NSString *cityName;
 @property (assign, nonatomic, readonly) BOOL shouldShowInformation;
 
 

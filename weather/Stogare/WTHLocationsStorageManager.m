@@ -11,7 +11,18 @@
 
 @implementation WTHLocationsStorageManager
 
-- (void)insertLocationIntoDatabaseIfNew:(WTHGeoLocation *)location {
++ (instancetype)sharedManager {
+    static dispatch_once_t pred;
+    static id sharedManager = nil;
+    dispatch_once(&pred, ^{
+        sharedManager = [[self alloc] init];
+    });
+    
+    return sharedManager;
+}
+
+
+- (void)insertLocationIntoDatabaseIfNew:(WTHLocationEntityModel *)location {
     if (!location) return;
     NSArray *recentSearches = [self fetchLocations];
     NSInteger indexOfObjectInDatabase = [self indexOfObjectInDatabase:location.address];
@@ -24,7 +35,7 @@
 }
 
 
-- (void)deleteLocationFromDatabase:(WTHGeoLocation *)location {
+- (void)deleteLocationFromDatabase:(WTHLocationEntityModel *)location {
     if (!location) return;
     NSArray *recentSearches = [self fetchLocations];
     NSInteger indexOfObjectInDatabase = [self indexOfObjectInDatabase:location.address];
@@ -34,6 +45,9 @@
     LocationEntity *dbEntity = recentSearches[indexOfObjectInDatabase];
     [self.managedObjectContext deleteObject:dbEntity];
     [self.managedObjectContext save:nil];
+}
+- (NSArray *)fetchRecentSearches {
+    return nil;
 }
 
 
@@ -49,14 +63,16 @@
 }
 
 
-- (void)insertGeolocationInDatabse:(WTHGeoLocation *)location {
+- (void)insertGeolocationInDatabse:(WTHLocationEntityModel *)location {
     NSManagedObjectContext *context = [self managedObjectContext];
     LocationEntity *insertQuerry = [NSEntityDescription insertNewObjectForEntityForName:[LocationEntity entityName]
                                                                      inManagedObjectContext:context];
     insertQuerry.address = location.address;
     insertQuerry.longitude = location.longitude;
     insertQuerry.latitude = location.latitude;
-    
+    insertQuerry.weatherDescription = location.weatherDescription;
+    insertQuerry.temperatureValueC = location.temperatureValueC;
+    insertQuerry.temperatureValueF = location.temperatureValueF;
     [context save:nil];
 }
 

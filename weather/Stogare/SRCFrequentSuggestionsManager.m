@@ -13,6 +13,16 @@ static int maxRecentSearches = 20;
 
 @implementation SRCFrequentSuggestionsManager
 
++ (instancetype)sharedManager {
+    static dispatch_once_t pred;
+    static id sharedManager = nil;
+    dispatch_once(&pred, ^{
+        sharedManager = [[self alloc] init];
+    });
+    
+    return sharedManager;
+}
+
 #pragma mark - Public Methods
 
 - (void)insertQuerryIntoDatabaseIfNew:(NSString *)querry {

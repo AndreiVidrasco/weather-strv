@@ -14,7 +14,7 @@
 
 + (instancetype)sharedManager;
 
-- (void)makeRequestWithLocation:(CLLocation *)location
+- (void)makeRequestWithLocation:(CLLocationCoordinate2D)location
                         success:(void (^)(id responseObject))success;
 - (void)makeRequestWithQuerry:(NSString *)querry
                       success:(void (^)(id responseObject))success;

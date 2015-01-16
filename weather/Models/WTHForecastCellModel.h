@@ -20,4 +20,5 @@
 @property (strong, nonatomic) NSString *temperatureValueF;
 @property (strong, nonatomic) NSString *temperatureValueC;
 
+
 @end

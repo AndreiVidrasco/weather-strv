@@ -12,12 +12,12 @@
 #import "WTHAutocompleteCell.h"
 #import "SRCFrequentSuggestionsManager.h"
 #import "WTHGMapsRequester.h"
-#import "WTHNetwork.h"
 
 @interface WTHSearchInputViewController () <UISearchBarDelegate, UITextFieldDelegate, UITableViewDelegate>
 
 @property (readwrite) NSArray *suggestionsList;
 
+@property (weak, nonatomic) id<SearchInputViewControllerDelegate> delegate;
 @property (assign, nonatomic) BOOL shouldDisplayLoadingIndicator;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
@@ -28,9 +28,10 @@
 
 @implementation WTHSearchInputViewController
 
-+ (instancetype)instantiate {
++ (instancetype)instantiateWithDelegate:(id<SearchInputViewControllerDelegate>)delegate {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     WTHSearchInputViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([WTHSearchInputViewController class])];
+    viewController.delegate = delegate;
     
     return viewController;
 }
@@ -53,6 +54,11 @@
 
 
 #pragma mark UITableView Methods
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [WTHAutocompleteCell prefferedHeight];
+}
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.suggestionsList count];
@@ -154,8 +160,10 @@
 
 - (void)geocodePoint:(NSString *)locationPointName {
     __weak WTHSearchInputViewController *weakSelf = self;
-    [[WTHNetwork sharedManager] makeRequestWithQuerry:locationPointName success:^(id responseObject) {
-        
+    [[WTHGMapsRequester sharedManager] geocodeString:locationPointName completionBlock:^(WTHGeoLocation *geoLocation) {
+        if ([weakSelf.delegate respondsToSelector:@selector(searchInputVC:didFinishPickingLocation:)]) {
+            [weakSelf.delegate searchInputVC:self didFinishPickingLocation:geoLocation];
+        }
         [[SRCFrequentSuggestionsManager sharedManager] insertQuerryIntoDatabaseIfNew:geoLocation.address];
         [weakSelf.autocompleteSearchBar resignFirstResponder];
         [weakSelf dismissViewControllerAnimated:YES completion:nil];

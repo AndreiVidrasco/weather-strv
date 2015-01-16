@@ -9,7 +9,7 @@
 #import "WTHCurrentLocationInformation.h"
 #import "WTHForecastCellModel.h"
 #import "WTHNetwork.h"
-#import "WTHGeoLocation.h"
+#import "WTHLocationEntityModel.h"
 #import "WTHLocationsStorageManager.h"
 
 NSString *const WTHNetworkDidReceiveNewCurrentLocationInformation = @"WTHNetworkDidReceiveNewCurrentLocationInformation";
@@ -60,14 +60,17 @@ NSString *const WTHNetworkDidReceiveNewCurrentLocationInformation = @"WTHNetwork
 }
 
 
-- (void)updateCurrentLocation:(CLLocation *)location {
+- (void)updateCurrentLocation:(CLLocationCoordinate2D)location {
     [[WTHNetwork sharedManager] makeRequestWithLocation:location success:^(id responseObject) {
         [self updateInformationWithDict:responseObject];
-        WTHGeoLocation *geoLocation = [[WTHGeoLocation alloc] init];
-        geoLocation.address = [WTHCurrentLocationInformation sharedInformation].region;
-        geoLocation.latitude = location.coordinate.latitude;
-        geoLocation.longitude = location.coordinate.longitude;
-        [[WTHLocationsStorageManager sharedManager] insertLocationIntoDatabaseIfNew:geoLocation];
+        WTHLocationEntityModel *locationEntity = [[WTHLocationEntityModel alloc] init];
+        locationEntity.longitude = location.longitude;
+        locationEntity.latitude = location.latitude;
+        locationEntity.address = self.cityName;
+        locationEntity.weatherDescription = self.weatherDesc;
+        locationEntity.temperatureValueF = self.temp_F;
+        locationEntity.temperatureValueC = self.temp_C;
+        [[WTHLocationsStorageManager sharedManager] insertLocationIntoDatabaseIfNew:locationEntity];
         [[NSNotificationCenter defaultCenter] postNotificationName:WTHNetworkDidReceiveNewCurrentLocationInformation object:responseObject];
     }];
     
@@ -122,5 +125,22 @@ NSString *const WTHNetworkDidReceiveNewCurrentLocationInformation = @"WTHNetwork
 - (BOOL)shouldShowInformation {
     return self.weatherDesc;
 }
+
+
+- (NSString *)cityName {
+    NSString *string = @"";
+    if (self.areaName) {
+        string = [string stringByAppendingFormat:@"%@", self.areaName];
+    }
+    if (self.region) {
+        string = [string stringByAppendingFormat:@", %@", self.region];
+    }
+    if (self.country) {
+        string = [string stringByAppendingFormat:@", %@", self.country];
+    }
+    
+    return string;
+}
+
 
 @end

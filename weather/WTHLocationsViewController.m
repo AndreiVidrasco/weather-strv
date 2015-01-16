@@ -11,10 +11,17 @@
 #import "WTHForecastCellModel.h"
 #import "WTHLocationsDatasource.h"
 #import "WTHLocationsStorageManager.h"
+#import "WTHSearchInputViewController.h"
+#import "WTHNetwork.h"
+#import "WTHGeoLocation.h"
+#import "WTHLocationEntityModel.h"
+#import "WTHLocationsStorageManager.h"
+#import "WTHCurrentLocationInformation.h"
 
-@interface WTHLocationsViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface WTHLocationsViewController () <UITableViewDataSource, UITableViewDelegate, SearchInputViewControllerDelegate>
 
 @property (strong, nonatomic) WTHLocationsDatasource *datasource;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -37,6 +44,14 @@
 }
 
 
+- (IBAction)addLocation:(id)sender {
+    WTHSearchInputViewController *inputVCtrl = [WTHSearchInputViewController instantiateWithDelegate:self];
+    UINavigationController *modalNav = [[UINavigationController alloc] initWithRootViewController:inputVCtrl];
+    
+    [self.parentViewController presentViewController:modalNav animated:YES completion:nil];
+
+}
+
 - (void)close {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -56,4 +71,24 @@
 }
 
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    CLLocationCoordinate2D coordinate = [self.datasource locationForRow:indexPath.row];
+    [[WTHCurrentLocationInformation sharedInformation] updateCurrentLocation:coordinate];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+- (void)searchInputVC:(WTHSearchInputViewController *)viewController didFinishPickingLocation:(WTHGeoLocation *)location {
+    //start laoding indicator
+    [[WTHNetwork sharedManager] makeRequestWithLocation:location.coordinates success:^(id responseObject) {
+        WTHLocationEntityModel *model = [[WTHLocationEntityModel alloc] initWithDictionary:responseObject];
+        model.latitude = location.latitude;
+        model.longitude = location.longitude;
+        model.address = location.address;
+        [[WTHLocationsStorageManager sharedManager] insertLocationIntoDatabaseIfNew:model];
+        [self.tableView reloadData];
+    }];
+}
 @end

@@ -32,6 +32,14 @@
     return self.suggestionsList[row];
 }
 
+
+- (CLLocationCoordinate2D)locationForRow:(NSInteger)row {
+    NSArray *recentSearches = [[WTHLocationsStorageManager sharedManager] fetchLocations];
+    LocationEntity *entity = recentSearches[row];
+    return CLLocationCoordinate2DMake(entity.latitude, entity.longitude);
+}
+
+
 - (NSArray *)recentSearchesArray {
     NSArray *recentSearches = [[WTHLocationsStorageManager sharedManager] fetchLocations];
     if (recentSearches && ([recentSearches count] <= 0)) return nil;
@@ -46,7 +54,7 @@
         [array addObject:cellModel];
     }
     
-    return [[array reverseObjectEnumerator] allObjects];
+    return [NSArray arrayWithArray:array];
 }
 
 @end

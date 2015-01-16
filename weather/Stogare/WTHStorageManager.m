@@ -21,17 +21,6 @@ NSString *const dataBaseName = @"DataModel";
 
 #pragma mark - Public Methods
 
-+ (instancetype)sharedManager {
-    static dispatch_once_t pred;
-    static id sharedManager = nil;
-    dispatch_once(&pred, ^{
-        sharedManager = [[self alloc] init];
-    });
-    
-    return sharedManager;
-}
-
-
 - (void)saveContext {
     if (self.managedObjectContext) {
         [self.managedObjectContext save:nil];

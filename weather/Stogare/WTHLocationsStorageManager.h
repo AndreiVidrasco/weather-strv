@@ -7,12 +7,12 @@
 //
 
 #import "WTHStorageManager.h"
-#import "WTHGeoLocation.h"
+#import "WTHLocationEntityModel.h"
 
 @interface WTHLocationsStorageManager : WTHStorageManager
 
-- (void)insertLocationIntoDatabaseIfNew:(WTHGeoLocation *)location;
-- (void)deleteLocationFromDatabase:(WTHGeoLocation *)location;
+- (void)insertLocationIntoDatabaseIfNew:(WTHLocationEntityModel *)location;
+- (void)deleteLocationFromDatabase:(WTHLocationEntityModel *)location;
 
 @property (nonatomic, readonly) NSArray *fetchLocations;
 

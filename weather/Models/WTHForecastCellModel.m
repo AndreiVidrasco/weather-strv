@@ -40,6 +40,15 @@
 }
 
 
+- (NSString *)detailTitle {
+    if (!_detailTitle) {
+        _detailTitle = self.weatherDescription;
+    }
+    
+    return _detailTitle;
+}
+
+
 - (NSDate *)dateValue {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM-dd"];

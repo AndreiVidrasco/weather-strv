@@ -33,18 +33,7 @@
 }
 
 - (NSString *)cityName {
-    NSString *string = @"";
-    if (self.currentInformation.areaName) {
-        string = [string stringByAppendingFormat:@"%@, ", self.currentInformation.areaName];
-    }
-    if (self.currentInformation.region) {
-        string = [string stringByAppendingFormat:@"%@, ", self.currentInformation.region];
-    }
-    if (self.currentInformation.country) {
-        string = [string stringByAppendingFormat:@"%@, ", self.currentInformation.country];
-    }
-    
-    return string;
+    return self.currentInformation.cityName;
 }
 
 

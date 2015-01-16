@@ -72,9 +72,9 @@
 }
 
 
-- (void)makeRequestWithLocation:(CLLocation *)location
+- (void)makeRequestWithLocation:(CLLocationCoordinate2D)location
                         success:(void (^)(id responseObject))success {
-    NSString *querry = [NSString stringWithFormat:@"%.3f,%.3f", location.coordinate.latitude, location.coordinate.longitude];
+    NSString *querry = [NSString stringWithFormat:@"%.3f,%.3f", location.latitude, location.longitude];
     [self makeRequestWithQuerry:querry success:success];
 }
 

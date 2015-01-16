@@ -68,10 +68,6 @@
 
 
 - (IBAction)share:(id)sender {
-    WTHSearchInputViewController *inputVCtrl = [WTHSearchInputViewController instantiateWithDelegate:self];
-    UINavigationController *modalNav = [[UINavigationController alloc] initWithRootViewController:inputVCtrl];
-    
-    [self.parentViewController presentViewController:modalNav animated:YES completion:nil];
 }
 
 

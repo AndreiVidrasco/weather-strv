@@ -4,15 +4,15 @@
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="temperatureValueC" optional="YES" syncable="YES"/>
-        <attribute name="temperatureValueF" optional="YES" syncable="YES"/>
+        <attribute name="temperatureValueC" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="temperatureValueF" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="weatherDescription" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="SearchQuerryEntity" representedClassName="SearchQuerryEntity" syncable="YES">
         <attribute name="searchQueery" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="LocationEntity" positionX="0" positionY="0" width="128" height="133"/>
+        <element name="LocationEntity" positionX="0" positionY="0" width="128" height="135"/>
         <element name="SearchQuerryEntity" positionX="0" positionY="0" width="128" height="60"/>
     </elements>
 </model>

@@ -184,6 +184,30 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <inset key="separatorInset" minX="90" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="9Tl-Gk-yjc">
+                                    <rect key="frame" x="0.0" y="151" width="600" height="70"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nnP-EN-inM">
+                                            <rect key="frame" x="268" y="0.0" width="65" height="65"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="nnP-EN-inM" secondAttribute="height" multiplier="1:1" id="szm-t9-awk"/>
+                                            </constraints>
+                                            <state key="normal" image="location_button">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="addLocation:" destination="QoR-7k-S7x" eventType="touchUpInside" id="ANb-pT-gw5"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="nnP-EN-inM" secondAttribute="bottom" constant="5" id="0mG-j8-OrK"/>
+                                        <constraint firstAttribute="centerX" secondItem="nnP-EN-inM" secondAttribute="centerX" id="cGn-t3-lEn"/>
+                                        <constraint firstItem="nnP-EN-inM" firstAttribute="top" secondItem="9Tl-Gk-yjc" secondAttribute="top" id="i9m-wY-UZw"/>
+                                    </constraints>
+                                </view>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WTHForecastDetailedCell" id="WeW-2f-Vet" customClass="WTHForecastDetailedCell">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -271,6 +295,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="Y1E-yt-X4C" id="kHl-Md-JLO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JvR-uB-K8h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -542,7 +569,7 @@
         <!--Search Input View Controller-->
         <scene sceneID="oT6-tg-NZc">
             <objects>
-                <viewController storyboardIdentifier="SRCSearchInputViewController" id="ALl-wt-LKL" customClass="WTHSearchInputViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WTHSearchInputViewController" id="ALl-wt-LKL" customClass="WTHSearchInputViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="V6G-Qq-DQr"/>
                         <viewControllerLayoutGuide type="bottom" id="Fxa-Nq-6XG"/>
@@ -557,7 +584,7 @@
                                 <color key="separatorColor" red="0.92156862750000001" green="0.92549019610000005" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AutocompleteCell" rowHeight="44" id="5zM-KT-jZj" customClass="WTHAutocompleteCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WTHAutocompleteCell" rowHeight="44" id="5zM-KT-jZj" customClass="WTHAutocompleteCell">
                                         <rect key="frame" x="0.0" y="22" width="320" height="63"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5zM-KT-jZj" id="4Bj-Cy-eaf">
@@ -650,6 +677,7 @@
     </scenes>
     <resources>
         <image name="forecast_line" width="234" height="1"/>
+        <image name="location_button" width="65" height="65"/>
         <image name="tabbar_forecast" width="23" height="22"/>
         <image name="tabbar_settings" width="23" height="23"/>
         <image name="tabbar_today" width="24" height="24"/>
