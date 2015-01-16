@@ -12,6 +12,7 @@
 #import "WTHLocationsViewController.h"
 #import "WTHCurrentLocationInformation.h"
 #import "WTHLocationTrackingManager.h"
+#import "WTHSettingsHandler.h"
 
 @interface WTHForecastViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -35,7 +36,13 @@
 
 
 - (void)handleRefresh {
-    [[WTHLocationTrackingManager sharedInstance] startTrackingUser];
+    CLLocation *location = [WTHSettingsHandler sharedHandler].currentSelectedLocation;
+    if (location) {
+        [[WTHCurrentLocationInformation sharedInformation] updateCurrentLocation:location.coordinate
+                                                         isDeviceCurrentLocation:NO];
+    } else {
+        [[WTHLocationTrackingManager sharedInstance] startTrackingUser];
+    }
 }
 
 

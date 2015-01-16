@@ -121,6 +121,9 @@ NSString *const WTHNetworkDidReceiveNewCurrentLocationInformation = @"WTHNetwork
 
 
 - (NSString *)firstValueInArrayFromDictionary:(NSDictionary *)dict forKey:(NSString *)key {
+    if ([dict isKindOfClass:[NSNull class]]) {
+        return nil;
+    }
     NSArray *array = [dict safeObjectForKey:key];
 
     return [[array firstObject] safeObjectForKey:@"value"];

@@ -25,6 +25,6 @@ typedef NS_ENUM(NSInteger, MetricUnit) {
 
 @property (nonatomic) TemperatureUnit currentTemperatureUnit;
 @property (nonatomic) MetricUnit currentMetricUnit;
-@property (strong, nonatomic) WTHGeoLocation *currentSelectedLocation;
+@property (strong, nonatomic) CLLocation *currentSelectedLocation;
 
 @end

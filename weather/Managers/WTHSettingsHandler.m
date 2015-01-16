@@ -10,6 +10,7 @@
 
 NSString *const TemperatureSettingValue = @"TemperatureSettingValue";
 NSString *const MetricSettingValue = @"MetricSettingValue";
+NSString *const CurrentLocationSettingValue = @"CurrentLocationSettingValue";
 
 @implementation WTHSettingsHandler
 
@@ -40,6 +41,19 @@ NSString *const MetricSettingValue = @"MetricSettingValue";
 
 - (void)setCurrentMetricUnit:(MetricUnit)unit {
     [[NSUserDefaults standardUserDefaults] setInteger:unit forKey:MetricSettingValue];
+}
+
+
+- (CLLocation *)currentSelectedLocation {
+    NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:CurrentLocationSettingValue];
+    
+    return [NSKeyedUnarchiver unarchiveObjectWithData:data];
+}
+
+
+- (void)setCurrentSelectedLocation:(CLLocation *)currentSelectedLocation {
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:currentSelectedLocation];
+    [[NSUserDefaults standardUserDefaults] setObject:data forKey:CurrentLocationSettingValue];
 }
 
 @end

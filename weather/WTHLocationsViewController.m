@@ -17,6 +17,8 @@
 #import "WTHLocationEntityModel.h"
 #import "WTHLocationsStorageManager.h"
 #import "WTHCurrentLocationInformation.h"
+#import "WTHLocationTrackingManager.h"
+#import "WTHSettingsHandler.h"
 
 @interface WTHLocationsViewController () <UITableViewDataSource, UITableViewDelegate, SearchInputViewControllerDelegate>
 
@@ -103,8 +105,15 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     WTHLocationEntityModel *entityModel = [self.datasource entityForForRow:indexPath.row];
-    [[WTHCurrentLocationInformation sharedInformation] updateCurrentLocation:CLLocationCoordinate2DMake(entityModel.latitude, entityModel.longitude)
-                                                     isDeviceCurrentLocation:entityModel.isCurrentLocation];
+    if (entityModel.isCurrentLocation) {
+        [[WTHLocationTrackingManager sharedInstance] startTrackingUser];
+        [WTHSettingsHandler sharedHandler].currentSelectedLocation = nil;
+    } else {
+        CLLocationCoordinate2D location = CLLocationCoordinate2DMake(entityModel.latitude, entityModel.longitude);
+        [WTHSettingsHandler sharedHandler].currentSelectedLocation = [[CLLocation alloc] initWithLatitude:location.latitude longitude:location.longitude];
+        [[WTHCurrentLocationInformation sharedInformation] updateCurrentLocation:location
+                                                         isDeviceCurrentLocation:entityModel.isCurrentLocation];
+    }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

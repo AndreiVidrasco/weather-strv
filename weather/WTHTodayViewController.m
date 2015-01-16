@@ -13,6 +13,7 @@
 #import "WTHLocationsViewController.h"
 #import "WTHLocationTrackingManager.h"
 #import "WTHCurrentLocationInformation.h"
+#import "WTHSettingsHandler.h"
 
 @interface WTHTodayViewController ()
 
@@ -41,7 +42,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[WTHLocationTrackingManager sharedInstance] startTrackingUser];
+    [self handleRefresh];
     [self adjustColorsAndFonts];
     [self stopLoadingIndicator];
 }
@@ -150,6 +151,17 @@
     self.informationView.hidden = NO;
     self.loadinView.hidden = YES;
     [self.activityIndicator stopAnimating];
+}
+
+
+- (void)handleRefresh {
+    CLLocation *location = [WTHSettingsHandler sharedHandler].currentSelectedLocation;
+    if (location) {
+        [[WTHCurrentLocationInformation sharedInformation] updateCurrentLocation:location.coordinate
+                                                         isDeviceCurrentLocation:NO];
+    } else {
+        [[WTHLocationTrackingManager sharedInstance] startTrackingUser];
+    }
 }
 
 @end
