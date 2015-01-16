@@ -43,7 +43,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setEdgesForExtendedLayout:UIRectEdgeNone];
-    self.navigationItem.rightBarButtonItem.tintColor = [UIColor blueTextColor];
     [self displayCurrentLocationAndFrequestSearches];
     [self adjustVisualSearchBar];
     
@@ -169,6 +168,8 @@
 
 
 - (void)adjustVisualSearchBar {
+    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+    self.navigationItem.rightBarButtonItem.tintColor = [UIColor blueTextColor];
     self.autocompleteSearchBar.scopeBarBackgroundImage = [[UIImage imageNamed:@"location_input"] resizableImageWithCapInsets:UIEdgeInsetsMake(4, 8, 4, 8)];
     [self.autocompleteSearchBar setImage:[UIImage imageNamed:@"location_search"]
                         forSearchBarIcon:UISearchBarIconSearch
@@ -177,10 +178,23 @@
                         forSearchBarIcon:UISearchBarIconClear
                                    state:UIControlStateNormal];
     UIView *view = [self.autocompleteSearchBar.subviews firstObject];
-    UIView *backgroundView = [view.subviews firstObject];
-    for (UIView *subSubView in [backgroundView subviews]) {
-        if ([NSStringFromClass([subSubView class]) isEqualToString:@"_UISearchBarScopeBarBackground"]) {
-            [subSubView setFrame:CGRectMake(0, 0, subSubView.frame.size.width, self.autocompleteSearchBar.frame.size.height)];
+    for (UIView *backgroundView in view.subviews) {
+        if ([NSStringFromClass([backgroundView class]) isEqualToString:@"UIView"]) {
+            for (UIView *subSubView in [backgroundView subviews]) {
+                if ([NSStringFromClass([subSubView class]) isEqualToString:@"_UISearchBarScopeBarBackground"]) {
+                    [subSubView setFrame:CGRectMake(0, 0, subSubView.frame.size.width, self.autocompleteSearchBar.frame.size.height)];
+                }
+            }
+        } else if ([NSStringFromClass([backgroundView class]) isEqualToString:@"UISearchBarTextField"]) {
+            for (UIView *subSubView in [backgroundView subviews]) {
+                if ([NSStringFromClass([subSubView class]) isEqualToString:@"_UISearchBarSearchFieldBackgroundView"]) {
+                    for (UIView *subSubSubView in [subSubView subviews]) {
+                        if ([subSubSubView respondsToSelector:@selector(setHidden:)]) {
+                            [subSubSubView setHidden:YES];
+                        }
+                    }
+                }
+            }
         }
     }
 }
