@@ -17,7 +17,7 @@
 
 @property (strong, nonatomic) NSString *weatherDescription;
 @property (assign, nonatomic) NSInteger weatherCode;
-#warning here;
+
 @property (strong, nonatomic) NSString *date;
 @property (strong, nonatomic) NSString *temperatureValueF;
 @property (strong, nonatomic) NSString *temperatureValueC;
