@@ -18,6 +18,7 @@
         self.temperatureValueC = [[currentCondition safeObjectForKey:@"temp_C"] stringByAppendingString:@"°"];
         self.temperatureValueF = [[currentCondition safeObjectForKey:@"temp_F"] stringByAppendingString:@"°"];
         self.weatherDescription = [self firstValueInArrayFromDictionary:currentCondition forKey:@"weatherDesc"];
+        self.weatherCode = [[currentCondition safeObjectForKey:@"weatherCode"] integerValue];
         NSDictionary *nearestArea = [[data safeObjectForKey:@"nearest_area"] firstObject];
         self.address = [self firstValueInArrayFromDictionary:nearestArea forKey:@"region"];
     }

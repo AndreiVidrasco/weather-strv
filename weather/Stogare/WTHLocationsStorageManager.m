@@ -40,6 +40,7 @@
         }
         dbEntity.latitude = location.latitude;
         dbEntity.longitude = location.longitude;
+        dbEntity.weatherCode = location.weatherCode;
         
         [self.managedObjectContext save:nil];
     }
@@ -83,6 +84,8 @@
     insertQuerry.temperatureValueC = location.temperatureValueC;
     insertQuerry.temperatureValueF = location.temperatureValueF;
     insertQuerry.isCurrentLocation = location.isCurrentLocation;
+    insertQuerry.weatherCode = location.weatherCode;
+    
     [context save:nil];
 }
 

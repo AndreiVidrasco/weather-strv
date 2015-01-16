@@ -35,5 +35,6 @@ NSString *const WTHNetworkDidReceiveNewCurrentLocationInformation;
 @property (strong, nonatomic, readonly) NSString *cityName;
 @property (assign, nonatomic, readonly) BOOL shouldShowCurrentLocationIcon;
 @property (assign, nonatomic, readonly) BOOL shouldShowInformation;
+@property (assign, nonatomic, readonly) NSInteger weatherCode;
 
 @end

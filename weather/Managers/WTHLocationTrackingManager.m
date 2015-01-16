@@ -92,7 +92,6 @@
 
 - (void)locationManager:(CLLocationManager *)manager
        didFailWithError:(NSError *)error {
-#warning Some error
 }
 
 

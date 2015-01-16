@@ -57,6 +57,7 @@
         cellModel.temperatureValueF = entity.temperatureValueF;
         cellModel.temperatureValueC = entity.temperatureValueC;
         cellModel.showCurrentLocationIcon = entity.isCurrentLocation;
+        cellModel.weatherCode = entity.weatherCode;
         [array addObject:cellModel];
     }
     

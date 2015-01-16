@@ -59,7 +59,7 @@
 
 
 - (NSString *)imageName {
-    return [WTHImageNameFromWeatherDescription imageNameFromWeather:self.weatherDescription];
+    return [WTHImageNameFromWeatherDescription imageNameFromWeather:self.weatherCode bigImage:NO];
 }
 
 @end

@@ -30,6 +30,7 @@ NSString *const WTHNetworkDidReceiveNewCurrentLocationInformation = @"WTHNetwork
 @property (strong, nonatomic) NSString *region;
 @property (strong, nonatomic) NSArray *nextDaysInformation;
 @property (assign, nonatomic) BOOL shouldShowCurrentLocationIcon;
+@property (assign, nonatomic) NSInteger weatherCode;
 
 @end
 
@@ -73,6 +74,7 @@ NSString *const WTHNetworkDidReceiveNewCurrentLocationInformation = @"WTHNetwork
         locationEntity.temperatureValueF = [self.temp_F stringByAppendingString:@"°"];
         locationEntity.temperatureValueC = [self.temp_C stringByAppendingString:@"°"];
         locationEntity.isCurrentLocation = isDeviceCurrentLocation;
+        locationEntity.weatherCode = self.weatherCode;
         self.shouldShowCurrentLocationIcon = isDeviceCurrentLocation;
         [[WTHLocationsStorageManager sharedManager] insertLocationIntoDatabaseIfNew:locationEntity];
         [[NSNotificationCenter defaultCenter] postNotificationName:WTHNetworkDidReceiveNewCurrentLocationInformation object:responseObject];
@@ -92,6 +94,7 @@ NSString *const WTHNetworkDidReceiveNewCurrentLocationInformation = @"WTHNetwork
     self.windspeedKmph = [currentCondition safeObjectForKey:@"windspeedKmph"];
     self.windspeedMiles = [currentCondition safeObjectForKey:@"windspeedMiles"];
     self.weatherDesc = [self firstValueInArrayFromDictionary:currentCondition forKey:@"weatherDesc"];
+    self.weatherCode = [[currentCondition safeObjectForKey:@"weatherCode"] integerValue];
 }
 
 
@@ -110,6 +113,7 @@ NSString *const WTHNetworkDidReceiveNewCurrentLocationInformation = @"WTHNetwork
         NSDictionary *hourly = [[dict safeObjectForKey:@"hourly"] firstObject];
         cellModel.temperatureValueC = [[hourly safeObjectForKey:@"tempC"] stringByAppendingString:@"°"];
         cellModel.temperatureValueF = [[hourly safeObjectForKey:@"tempF"] stringByAppendingString:@"°"];
+        cellModel.weatherCode = [[hourly safeObjectForKey:@"weatherCode"] integerValue];
         cellModel.weatherDescription = [self firstValueInArrayFromDictionary:hourly forKey:@"weatherDesc"];
         cellModel.detailTitle = [self firstValueInArrayFromDictionary:hourly forKey:@"weatherDesc"];
         cellModel.showCurrentLocationIcon = NO;

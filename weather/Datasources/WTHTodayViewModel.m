@@ -91,7 +91,8 @@
 
 
 - (NSString *)weatherImageName {
-    return [WTHImageNameFromWeatherDescription imageNameFromWeather:self.currentInformation.weatherDesc];
+#warning warning here
+    return [WTHImageNameFromWeatherDescription imageNameFromWeather:self.currentInformation.weatherCode bigImage:YES];
 }
 
 

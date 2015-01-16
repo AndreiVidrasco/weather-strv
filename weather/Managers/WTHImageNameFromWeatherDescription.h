@@ -10,6 +10,7 @@
 
 @interface WTHImageNameFromWeatherDescription : NSObject
 
-+ (NSString *)imageNameFromWeather:(NSString *)description;
++ (NSString *)imageNameFromWeather:(NSInteger)weatherCode
+                          bigImage:(BOOL)bigImage;
 
 @end

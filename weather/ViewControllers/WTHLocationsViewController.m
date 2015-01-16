@@ -119,7 +119,6 @@
 
 
 - (void)searchInputVC:(WTHSearchInputViewController *)viewController didFinishPickingLocation:(WTHGeoLocation *)location {
-    //start laoding indicator
     [[WTHNetwork sharedManager] makeRequestWithLocation:location.coordinates success:^(id responseObject) {
         WTHLocationEntityModel *model = [[WTHLocationEntityModel alloc] initWithDictionary:responseObject];
         model.latitude = location.latitude;
